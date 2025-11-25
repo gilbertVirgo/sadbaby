@@ -1,4 +1,4 @@
-@import "./util.scss";
+@use "./util.scss" as *;
 
 *,
 *::before,
@@ -8,8 +8,18 @@
 	padding: 0;
 }
 
+:root {
+	font-size: 16px;
+
+	@include media(sm) {
+		font-size: 20px;
+	}
+}
+
 .font--title {
-	font-family: "ivymode", serif;
+	font-family: "ivymode-variable", serif;
+
+	font-variation-settings: "wght" 380, "ital" 0;
 }
 
 .font--body {
@@ -19,6 +29,7 @@
 html {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	// -webkit-text-stroke: -0.45px;
 }
 
 body {
@@ -26,6 +37,9 @@ body {
 
 	min-height: 100vh;
 	line-height: 1.5;
+
+	background-color: $color--light;
+	color: $color--dark;
 }
 
 img,
@@ -48,6 +62,8 @@ h1,
 h2,
 h3 {
 	@extend .font--title;
+
+	text-wrap: balance;
 }
 
 p,
@@ -58,6 +74,15 @@ h4,
 h5,
 h6 {
 	overflow-wrap: break-word;
+}
+
+p {
+	line-height: 130%;
+}
+
+h1 {
+	font-size: 3rem;
+	line-height: 115%;
 }
 
 ul,
@@ -74,4 +99,24 @@ button {
 	background: none;
 	border: none;
 	cursor: pointer;
+}
+
+.button {
+	@extend .group-hz, .gap--xs;
+
+	border: 1px solid $color--primary;
+	border-radius: sp(xl);
+}
+
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	border-bottom: 1px solid $color--grey;
+}
+
+.container {
+	max-width: bp(2xl);
+	width: 100%;
 }

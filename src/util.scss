@@ -1,3 +1,6 @@
+@use "sass:map";
+@use "sass:meta";
+
 // Color Variables
 $color--dark: #0d0d0d;
 $color--grey: #d8d8d8;
@@ -7,12 +10,18 @@ $color--secondary: #00cecb;
 $color--accent: #ffed66;
 
 // Breakpoint Variables
-$bp-xs: 480px;
-$bp-sm: 640px;
-$bp-md: 768px;
-$bp-lg: 1024px;
-$bp-xl: 1280px;
-$bp-2xl: 1536px;
+$breakpoints: (
+	"xs": 480px,
+	"sm": 640px,
+	"md": 768px,
+	"lg": 1024px,
+	"xl": 1280px,
+	"2xl": 1536px,
+);
+
+@function bp($name) {
+	@return map.get($breakpoints, $name);
+}
 
 // Spacing Variables
 $sp-xs: 0.5rem;
@@ -22,13 +31,34 @@ $sp-lg: 2rem;
 $sp-xl: 3rem;
 $sp-2xl: 4rem;
 
+$spacings: (
+	"xs": $sp-xs,
+	"sm": $sp-sm,
+	"md": $sp-md,
+	"lg": $sp-lg,
+	"xl": $sp-xl,
+	"2xl": $sp-2xl,
+);
+
+@function sp($name) {
+	@return map.get($spacings, $name);
+}
+
 // Media Mixin
 @mixin media($min: null, $max: null) {
-	@if $min and $max {
+	// Convert string keys to actual breakpoint values
+	@if meta.type-of($min) == "string" {
+		$min: map.get($breakpoints, $min);
+	}
+	@if meta.type-of($max) == "string" {
+		$max: map.get($breakpoints, $max);
+	}
+
+	@if $min and $min != 0 and $max {
 		@media (min-width: $min) and (max-width: $max) {
 			@content;
 		}
-	} @else if $min {
+	} @else if $min and $min != 0 {
 		@media (min-width: $min) {
 			@content;
 		}
@@ -36,6 +66,8 @@ $sp-2xl: 4rem;
 		@media (max-width: $max) {
 			@content;
 		}
+	} @else {
+		@content;
 	}
 }
 
@@ -49,26 +81,57 @@ $spacings: (
 	"2xl": $sp-2xl,
 );
 
-@mixin group($direction, $gap) {
+.group-vt {
 	display: flex;
-	@if $direction == "vt" {
-		flex-direction: column;
-		row-gap: $gap;
-	} @else if $direction == "hz" {
-		flex-direction: row;
-		column-gap: $gap;
+	flex-direction: column;
+
+	@each $name, $size in $spacings {
+		&.gap--#{$name} {
+			row-gap: $size;
+		}
 	}
 }
 
-.group {
+.group-hz {
+	display: flex;
+	flex-direction: row;
+
 	@each $name, $size in $spacings {
-		&--vt-#{$name} {
-			@include group("vt", $size);
-		}
-		&--hz-#{$name} {
-			@include group("hz", $size);
+		&.gap--#{$name} {
+			column-gap: $size;
 		}
 	}
+}
+
+.group--left {
+	&.group-vt {
+		align-items: flex-start;
+	}
+	&.group-hz {
+		justify-content: flex-start;
+	}
+}
+
+.group--center {
+	&.group-vt {
+		align-items: center;
+	}
+	&.group-hz {
+		justify-content: center;
+	}
+}
+
+.group--right {
+	&.group-vt {
+		align-items: flex-end;
+	}
+	&.group-hz {
+		justify-content: flex-end;
+	}
+}
+
+.group--auto {
+	justify-content: space-between;
 }
 
 // Icon Utility Classes
@@ -114,6 +177,12 @@ $icons: (
 			background-color: $color;
 		}
 	}
+
+	@each $name, $size in $spacings {
+		&--#{$name} {
+			width: $size;
+		}
+	}
 }
 
 // Width Utility Classes
@@ -130,6 +199,58 @@ $icons: (
 	@each $name, $size in $spacings {
 		&--#{$name} {
 			height: $size;
+		}
+	}
+}
+
+// Align Utility Classes
+.align {
+	&--left {
+		text-align: left;
+	}
+	&--center {
+		text-align: center;
+	}
+	&--right {
+		text-align: right;
+	}
+	&--justify {
+		text-align: justify;
+	}
+}
+
+// Foreground Color Classes
+.fg {
+	@each $name, $color in $colors {
+		&--#{$name} {
+			color: $color;
+		}
+	}
+}
+
+// Background Color Classes
+.bg {
+	@each $name, $color in $colors {
+		&--#{$name} {
+			background-color: $color;
+		}
+	}
+}
+
+.container {
+	@each $name, $size in $spacings {
+		&--#{$name} {
+			padding-top: $size;
+			padding-bottom: $size;
+		}
+	}
+}
+
+// Button Utility Classes
+.button {
+	@each $name, $size in $spacings {
+		&--#{$name} {
+			padding: calc($size * 0.5) $size;
 		}
 	}
 }
