@@ -1,0 +1,183 @@
+@use "./util.scss" as *;
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+:root {
+	font-size: 16px;
+
+	@include media(sm) {
+		font-size: 20px;
+	}
+}
+
+.font--title {
+	font-family: "ivymode-variable", serif;
+
+	font-variation-settings: "wght" 380, "ital" 0;
+}
+
+.font--body {
+	font-family: "brandon-grotesque", sans-serif;
+}
+
+html {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	// -webkit-text-stroke: -0.45px;
+}
+
+body {
+	@extend .font--body;
+
+	min-height: 100vh;
+	line-height: 1.5;
+
+	background-color: $color--light;
+	color: $color--dark;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+	display: block;
+	max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+	font: inherit;
+}
+
+h1,
+h2,
+h3 {
+	@extend .font--title;
+
+	text-wrap: balance;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	overflow-wrap: break-word;
+}
+
+p a,
+label a {
+	text-decoration: underline;
+	text-decoration-color: color("primary");
+	text-decoration-thickness: 1.5px;
+}
+
+p,
+h4,
+label {
+	line-height: 130%;
+}
+
+h1 {
+	font-size: 3rem;
+	line-height: 115%;
+}
+
+h2 {
+	font-size: 2.33rem;
+	line-height: 120%;
+}
+
+h3 {
+	font-size: 1.5rem;
+}
+
+h4,
+label,
+strong,
+b {
+	font-weight: 500;
+}
+
+ul,
+ol {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+button {
+	appearance: none;
+	display: block;
+	background: none;
+	border: none;
+	cursor: pointer;
+}
+
+input {
+	appearance: none;
+	border: 1px solid color("grey");
+	outline: none;
+	padding: sp(xxs) sp(xs);
+	background: unset;
+}
+
+// Custom radio button
+input[type="radio"] {
+	appearance: none;
+	width: sp(sm);
+	height: sp(sm);
+	padding: 0;
+	border: none;
+	background-image: url("/icons/radio--off.svg");
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	cursor: pointer;
+
+	&:checked {
+		background-image: url("/icons/radio--on.svg");
+	}
+
+	&:focus-visible {
+		outline: 2px solid color("dark");
+		outline-offset: 2px;
+	}
+}
+
+// Custom checkbox
+input[type="checkbox"] {
+	appearance: none;
+	width: sp(sm);
+	height: sp(sm);
+	padding: 0;
+	border: none;
+	background-image: url("/icons/checkbox--off.svg");
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	cursor: pointer;
+
+	&:checked {
+		background-image: url("/icons/checkbox--on.svg");
+	}
+
+	&:focus-visible {
+		outline: 2px solid color("dark");
+		outline-offset: 2px;
+	}
+}

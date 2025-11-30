@@ -3,11 +3,28 @@
 
 // Color Variables
 $color--dark: #0d0d0d;
+$color--dark-overlay: #0d0d0d80;
 $color--grey: #d8d8d8;
 $color--primary: #ff5e5b;
 $color--light: #ffffea;
+$color--light-overlay: #ffffeacc;
 $color--secondary: #00cecb;
 $color--accent: #ffed66;
+
+$colors: (
+	"dark": $color--dark,
+	"dark-overlay": $color--dark-overlay,
+	"grey": $color--grey,
+	"primary": $color--primary,
+	"light": $color--light,
+	"light-overlay": $color--light-overlay,
+	"secondary": $color--secondary,
+	"accent": $color--accent,
+);
+
+@function color($name) {
+	@return map.get($colors, $name);
+}
 
 // Breakpoint Variables
 $breakpoints: (
@@ -16,7 +33,7 @@ $breakpoints: (
 	"md": 768px,
 	"lg": 1024px,
 	"xl": 1280px,
-	"2xl": 1536px,
+	"xxl": 1536px,
 );
 
 @function bp($name) {
@@ -24,20 +41,24 @@ $breakpoints: (
 }
 
 // Spacing Variables
-$sp-xs: 0.5rem;
+$sp-xxxs: 0.25rem;
+$sp-xxs: 0.5rem;
+$sp-xs: 0.75rem;
 $sp-sm: 1rem;
 $sp-md: 1.5rem;
 $sp-lg: 2rem;
 $sp-xl: 3rem;
-$sp-2xl: 4rem;
+$sp-xxl: 4rem;
 
 $spacings: (
+	"xxxs": $sp-xxxs,
+	"xxs": $sp-xxs,
 	"xs": $sp-xs,
 	"sm": $sp-sm,
 	"md": $sp-md,
 	"lg": $sp-lg,
 	"xl": $sp-xl,
-	"2xl": $sp-2xl,
+	"xxl": $sp-xxl,
 );
 
 @function sp($name) {
@@ -71,16 +92,6 @@ $spacings: (
 	}
 }
 
-// Group Utility Classes
-$spacings: (
-	"xs": $sp-xs,
-	"sm": $sp-sm,
-	"md": $sp-md,
-	"lg": $sp-lg,
-	"xl": $sp-xl,
-	"2xl": $sp-2xl,
-);
-
 .group-vt {
 	display: flex;
 	flex-direction: column;
@@ -103,57 +114,63 @@ $spacings: (
 	}
 }
 
-.group--left {
-	&.group-vt {
-		align-items: flex-start;
-	}
-	&.group-hz {
-		justify-content: flex-start;
+// Alignment utilities
+$align-values: (
+	"start": flex-start,
+	"center": center,
+	"end": flex-end,
+	"stretch": stretch,
+	"between": space-between,
+	"around": space-around,
+	"evenly": space-evenly,
+);
+
+// Horizontal alignment (left/center/right on screen)
+@each $name, $value in $align-values {
+	.hz--#{$name} {
+		&.group-hz {
+			justify-content: $value;
+		}
+		&.group-vt {
+			align-items: $value;
+		}
 	}
 }
 
-.group--center {
-	&.group-vt {
-		align-items: center;
-	}
-	&.group-hz {
-		justify-content: center;
-	}
-}
-
-.group--right {
-	&.group-vt {
-		align-items: flex-end;
-	}
-	&.group-hz {
-		justify-content: flex-end;
+// Vertical alignment (top/center/bottom on screen)
+@each $name, $value in $align-values {
+	.vt--#{$name} {
+		&.group-hz {
+			align-items: $value;
+		}
+		&.group-vt {
+			justify-content: $value;
+		}
 	}
 }
 
-.group--auto {
-	justify-content: space-between;
+// Special case: baseline only makes sense for cross-axis alignment
+.vt--baseline {
+	&.group-hz {
+		align-items: baseline;
+	}
 }
 
 // Icon Utility Classes
-$colors: (
-	"dark": $color--dark,
-	"grey": $color--grey,
-	"primary": $color--primary,
-	"light": $color--light,
-	"secondary": $color--secondary,
-	"accent": $color--accent,
-);
 
 $icons: (
+	"instagram",
+	"open-menu",
+	"close-menu",
 	"bag",
 	"card-reader",
 	"choose",
-	"long-arrow",
+	"left-arrow",
+	"right-arrow",
 	"minus",
 	"pencil",
 	"plane",
 	"plus",
-	"short-arrow",
 	"tick"
 );
 
@@ -204,7 +221,7 @@ $icons: (
 }
 
 // Align Utility Classes
-.align {
+.talign {
 	&--left {
 		text-align: left;
 	}
@@ -246,11 +263,60 @@ $icons: (
 	}
 }
 
+// Max Width Utility Classes
+.max-width {
+	@each $name, $value in $breakpoints {
+		&--#{$name} {
+			width: 100%;
+			max-width: $value !important;
+		}
+	}
+}
+
 // Button Utility Classes
 .button {
 	@each $name, $size in $spacings {
 		&--#{$name} {
-			padding: calc($size * 0.5) $size;
+			column-gap: calc($size * 0.33);
+			padding: calc($size * 0.5) calc($size * 1.25);
 		}
 	}
+
+	@each $name, $color in $colors {
+		&--#{$name} {
+			background-color: $color;
+			color: if(
+				$name == "light" or $name == "grey" or $name == "accent",
+				$color--dark,
+				$color--light
+			);
+		}
+	}
+}
+
+// Responsive hide utilities
+@each $name, $value in $breakpoints {
+	.hide--#{$name}-down {
+		@include media(0, $value) {
+			display: none !important;
+		}
+	}
+
+	.hide--#{$name}-up {
+		@include media($value) {
+			display: none !important;
+		}
+	}
+}
+
+.flex-1 {
+	flex: 1;
+}
+
+.flex-2 {
+	flex: 2;
+}
+
+.flex-3 {
+	flex: 3;
 }
