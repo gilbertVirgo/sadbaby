@@ -6,6 +6,7 @@
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
+	outline: none;
 }
 
 :root {
@@ -56,6 +57,7 @@ button,
 textarea,
 select {
 	font: inherit;
+	color: inherit;
 }
 
 h1,
@@ -133,6 +135,7 @@ input {
 	border: 1px solid color("grey");
 	outline: none;
 	padding: sp(xxs) sp(xs);
+	box-sizing: border-box;
 	background: unset;
 }
 

@@ -320,3 +320,20 @@ $icons: (
 .flex-3 {
 	flex: 3;
 }
+
+// Transition Utility Classes
+$transitions: (
+	"short": 0.11s,
+	"medium": 0.22s,
+	"long": 0.44s,
+);
+
+@function transition($name) {
+	@return map.get($transitions, $name);
+}
+
+@each $name, $time in $transitions {
+	.transition--#{$name} {
+		transition: all $time;
+	}
+}

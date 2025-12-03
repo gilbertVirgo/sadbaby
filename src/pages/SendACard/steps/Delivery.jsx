@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import StepNavWrapper from "../StepNavWrapper";
+import StepNavWrapper from "../../BlankCards/StepNavWrapper";
 import DeliveryForm from "../../../components/DeliveryForm";
 
 export default ({ data, setData, onBack, onNext }) => {
@@ -27,7 +27,7 @@ export default ({ data, setData, onBack, onNext }) => {
 			<div className="wrapper">
 				<div className="container container--xxl group-vt gap--xl hz--center">
 					<header className="step__header">
-						<h2>Where to?</h2>
+						<h2>Where should we send it?</h2>
 						<p>
 							We&apos;ll deliver anywhere in the UK at no extra
 							cost.
@@ -39,37 +39,35 @@ export default ({ data, setData, onBack, onNext }) => {
 					<DeliveryForm
 						data={data}
 						setData={setData}
-						labels={{ name: "Your name" }}
+						labels={{ name: "Recipient name" }}
 					/>
 				</div>
 			</div>
 			<StepNavWrapper isSticky>
-				<div className="group-vt gap--xs hz--end">
+				<div className="group-vt gap--xs hz--start">
 					<button
 						type="button"
 						onClick={onBack}
-						className="button button--xs fg--dark"
+						className="button button--xs"
 					>
 						<div className="icon icon--left-arrow icon--dark icon--md" />
-						Back: choose
+						Back: write message
 					</button>
 				</div>
 				<div className="group-vt gap--xxs hz--end">
 					<button
 						type="submit"
-						className="button button--xs fg--dark"
+						className="button button--xs"
 						disabled={!isValid}
 					>
 						Next: confirm
 						<div className="icon icon--right-arrow icon--dark icon--md" />
 					</button>
-					{!isValid ? (
+					{!isValid && (
 						<p className="hint">
-							Please fill out all required (
-							<span className="required--asterisk" />) fields to
-							proceed.
+							Please fill out all required fields.
 						</p>
-					) : null}
+					)}
 				</div>
 			</StepNavWrapper>
 		</form>

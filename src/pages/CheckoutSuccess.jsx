@@ -1,14 +1,15 @@
 import { useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
-const STORAGE_KEY = "blankCardsFormData";
-const STEP_KEY = "blankCardsStepIndex";
-
 const clearStoredData = () => {
 	try {
 		if (typeof window !== "undefined") {
-			localStorage.removeItem(STORAGE_KEY);
-			localStorage.removeItem(STEP_KEY);
+			// Clear blank cards data
+			localStorage.removeItem("blankCardsFormData");
+			localStorage.removeItem("blankCardsStepIndex");
+			// Clear send a card data
+			localStorage.removeItem("sendACardFormData");
+			localStorage.removeItem("sendACardStepIndex");
 		}
 	} catch (e) {
 		console.warn("localStorage access denied:", e);
@@ -91,11 +92,17 @@ export default () => {
 					</div>
 				</div>
 				<div className="group-hz gap--sm">
-					<a href="/send-a-card" className="button button--sm">
+					<a
+						href="/send-a-card"
+						className="button button--sm fg--dark"
+					>
 						Send a card{" "}
 						<div className="icon icon--plane icon--dark icon--md" />
 					</a>
-					<a href="/blank-cards" className="button button--sm">
+					<a
+						href="/blank-cards"
+						className="button button--sm fg--dark"
+					>
 						Shop blank cards{" "}
 						<div className="icon icon--bag icon--dark icon--md" />
 					</a>

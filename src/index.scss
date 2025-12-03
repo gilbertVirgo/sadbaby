@@ -17,6 +17,18 @@ p.hint {
 	border-radius: sp(xl);
 	width: fit-content;
 	height: fit-content;
+
+	@extend .transition--short;
+	transform-origin: center center;
+
+	&:active {
+		transform: scale(1.05);
+	}
+
+	&[disabled] {
+		opacity: 0.5;
+		pointer-events: none;
+	}
 }
 
 .wrapper {
@@ -37,6 +49,7 @@ p.hint {
 
 .overlay--blur {
 	background-color: color(light-overlay);
+	-webkit-backdrop-filter: blur(sp(xxs));
 	backdrop-filter: blur(sp(xxs));
 }
 
@@ -286,6 +299,8 @@ p.hint {
 	column-gap: sp(sm);
 	row-gap: sp(md);
 
+	width: 100%;
+
 	@include media(0, sm) {
 		grid-template-columns: 1fr 1fr;
 	}
@@ -305,11 +320,66 @@ p.hint {
 	}
 }
 
+@keyframes skeleton-pulse {
+	from {
+		opacity: 0.33;
+	}
+	to {
+		opacity: 0.66;
+	}
+}
+
+@keyframes fade-in {
+	from {
+		opacity: 0;
+		transform: scale(0.95);
+	}
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+@keyframes bubble-in {
+	from {
+		opacity: 0;
+		transform: scale(0.5);
+	}
+	75% {
+		opacity: 1;
+		transform: scale(1.1);
+	}
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+.blank-cards-choose__card-skeleton {
+	aspect-ratio: 1 / 1;
+	background-color: color("grey");
+	animation: skeleton-pulse 1.5s ease infinite alternate;
+}
+
 .blank-cards-choose__button {
 	position: relative;
+
+	@extend .transition--short;
+
+	outline-color: transparent;
+	outline-width: 0;
+	outline-style: solid;
+
+	&.blank-cards-choose__button--selected {
+		outline-color: color("primary");
+		outline-width: sp(xxxs);
+	}
 }
 
 .blank-cards-chooose__quantity-indicator {
+	transform-origin: center center;
+	animation: transition("medium") bubble-in ease forwards;
+
 	position: absolute;
 	top: sp(xs);
 	right: sp(xs);
@@ -488,3 +558,73 @@ p.hint {
 .text-balance {
 	text-wrap: balance;
 }
+
+.message-input__wrapper {
+	@extend .transition--short;
+
+	display: grid;
+
+	width: 100%;
+	max-width: bp(xl);
+
+	box-sizing: border-box;
+
+	.left-page {
+		flex: 1;
+		background: linear-gradient(to right, color("light"), color("grey"));
+	}
+
+	.right-page {
+		border: 1px solid color("grey");
+		aspect-ratio: 1 / 1.4142;
+		position: relative;
+		container: right-page / size;
+		overflow: hidden;
+		width: 100%;
+	}
+
+	@include media(0, sm) {
+		grid-template-columns: 1fr 10fr 1fr;
+	}
+
+	@include media(sm, md) {
+		grid-template-columns: 1fr 7.5fr 1fr;
+	}
+
+	@include media(md, lg) {
+		grid-template-columns: 1fr 5fr 1fr;
+	}
+
+	@include media(lg) {
+		grid-template-columns: 1fr 3.33fr 1fr;
+	}
+}
+
+.message-input {
+	font-weight: 300;
+	width: 100%;
+	height: 100%;
+	border: unset;
+	box-sizing: border-box;
+	resize: none;
+	background: transparent;
+	line-height: 125%;
+	letter-spacing: 1%;
+}
+
+// .message-input__wrapper {
+// 	width: 100%;
+// 	max-width: bp(md);
+// }
+
+// .message-input {
+// 	resize: none;
+// 	border: 1px solid color("grey");
+// 	padding: sp(md);
+// 	background: transparent;
+
+// 	font-size: sp(md);
+// 	line-height: 125%;
+// 	letter-spacing: 1%;
+// 	width: 100%;
+// }

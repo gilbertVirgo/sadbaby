@@ -1,10 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useCallback } from "react";
 import StepNavWrapper from "../StepNavWrapper";
+import CardGrid from "../../../components/CardGrid";
 
 export default ({ data, setData, onNext }) => {
-	const [cards, setCards] = useState([]);
-	const [loading, setLoading] = useState(true);
-	const [error, setError] = useState(null);
+	const [cards, setCards] = useState(data.cards || []);
 
 	const quantities = data.quantities || {};
 
@@ -13,29 +12,19 @@ export default ({ data, setData, onNext }) => {
 		0
 	);
 
-	useEffect(() => {
-		const fetchCards = async () => {
-			try {
-				const response = await fetch("/.netlify/functions/getCards");
-				if (!response.ok) {
-					throw new Error("Failed to fetch cards");
-				}
-				const fetchedCards = await response.json();
-				setCards(fetchedCards);
-				// Save cards to data so they're available in other steps
+	const handleCardsLoaded = useCallback(
+		(loadedCards) => {
+			setCards(loadedCards);
+			// Save cards to data if not already saved
+			if (!data.cards) {
 				setData({
 					...data,
-					cards: fetchedCards,
+					cards: loadedCards,
 				});
-			} catch (err) {
-				setError(err.message);
-			} finally {
-				setLoading(false);
 			}
-		};
-
-		fetchCards();
-	}, []);
+		},
+		[data, setData]
+	);
 
 	const addCard = (cardId) => {
 		if (totalCards >= 4) return;
@@ -63,25 +52,26 @@ export default ({ data, setData, onNext }) => {
 		}
 	};
 
-	if (loading) {
-		return (
-			<div className="wrapper">
-				<div className="container container--xxl group-vt gap--xl hz--center">
-					<p>Loading cards...</p>
-				</div>
-			</div>
-		);
-	}
+	const handleCardClick = (card, index) => {
+		addCard(card._id);
 
-	if (error) {
-		return (
-			<div className="wrapper">
-				<div className="container container--xxl group-vt gap--xl hz--center">
-					<p>Error loading cards: {error}</p>
-				</div>
-			</div>
-		);
-	}
+		const currentQty = quantities[card._id] || 0;
+
+		// Show hint if card wasn't added or was already selected
+		if ((currentQty === 0 && totalCards >= 4) || currentQty > 0) {
+			let hintEl = document.getElementById(
+				`remove-card-hint-${card._id}`
+			);
+
+			hintEl.classList.remove("hint--show");
+			void hintEl.offsetWidth;
+			hintEl.classList.add("hint--show");
+
+			setTimeout(() => {
+				hintEl.classList.remove("hint--show");
+			}, 3000);
+		}
+	};
 
 	return (
 		<>
@@ -97,79 +87,13 @@ export default ({ data, setData, onNext }) => {
 							<p>£7.95 • Free UK delivery</p>
 						</div>
 					</header>
-					<div className="blank-cards-choose__grid">
-						{cards.map((card, index) => {
-							return (
-								<div
-									key={index}
-									className="blank-cards-choose__card group-vt gap--xs talign--center"
-								>
-									<button
-										className="blank-cards-choose__button"
-										onClick={() => {
-											addCard(card._id);
-
-											if (
-												quantities[card._id] === 0 ||
-												typeof quantities[card._id] ===
-													"undefined"
-											)
-												return;
-
-											let hintEl =
-												document.getElementById(
-													`remove-card-hint-${card._id}`
-												);
-
-											hintEl.classList.remove(
-												"hint--show"
-											);
-											void hintEl.offsetWidth;
-											hintEl.classList.add("hint--show");
-
-											setTimeout(() => {
-												hintEl.classList.remove(
-													"hint--show"
-												);
-											}, 3000);
-										}}
-									>
-										<span
-											className={`blank-cards-chooose__quantity-indicator ${
-												quantities[card._id] > 0
-													? "contains-non-zero-value"
-													: ""
-											}`}
-										>
-											{quantities[card._id] || null}
-										</span>
-										<img
-											src={card.imageURL}
-											alt={card.title}
-											draggable={false}
-										/>
-
-										<div
-											id={`remove-card-hint-${card._id}`}
-											className={`blank-cards-choose__remove-card-hint`}
-										>
-											<p>
-												Want to remove this card? Use
-												the bar below.
-											</p>
-										</div>
-									</button>
-									<h4>{card.title}</h4>
-									<input
-										type="number"
-										name={`card-${card._id}`}
-										value={quantities[card._id] || 0}
-										readOnly
-									/>
-								</div>
-							);
-						})}
-					</div>
+					<CardGrid
+						mode="multiple"
+						selectedCards={quantities}
+						onCardSelect={handleCardClick}
+						maxCards={4}
+						onCardsLoaded={handleCardsLoaded}
+					/>
 				</div>
 			</div>
 			<StepNavWrapper isSticky>
@@ -178,8 +102,6 @@ export default ({ data, setData, onNext }) => {
 						{Object.entries(quantities).map(([cardId, qty]) => {
 							let card = cards.find((c) => c._id === cardId);
 							if (qty === 0 || !card) return null;
-
-							console.log({ cardId, qty });
 
 							return Array.from({ length: qty }, (_, index) => (
 								<button
@@ -208,7 +130,7 @@ export default ({ data, setData, onNext }) => {
 						onClick={() => {
 							totalCards === 4 && onNext();
 						}}
-						className="button button--xs"
+						className="button button--xs fg--dark"
 						disabled={totalCards !== 4}
 					>
 						Next: delivery

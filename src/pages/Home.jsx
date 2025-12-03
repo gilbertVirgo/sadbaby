@@ -38,11 +38,17 @@ export default () => {
 						</p>
 					</div>
 					<div className="group-hz gap--sm">
-						<a href="/send-a-card" className="button button--md">
+						<a
+							href="/send-a-card"
+							className="button button--md fg--light"
+						>
 							Send a card{" "}
 							<div className="icon icon--plane icon--light icon--md" />
 						</a>
-						<a href="/blank-cards" className="button button--md">
+						<a
+							href="/blank-cards"
+							className="button button--md fg--light"
+						>
 							Shop blank cards{" "}
 							<div className="icon icon--bag icon--light icon--md" />
 						</a>
@@ -64,7 +70,10 @@ export default () => {
 								recipient.
 							</p>
 						</div>
-						<a href="/send-a-card" className="button button--sm">
+						<a
+							href="/send-a-card"
+							className="button button--sm fg--dark"
+						>
 							Send a card{" "}
 							<div className="icon icon--plane icon--dark icon--md" />
 						</a>
@@ -122,7 +131,10 @@ export default () => {
 								deliver them anywhere in the UK for free.
 							</p>
 						</div>
-						<a href="/blank-cards" className="button button--sm">
+						<a
+							href="/blank-cards"
+							className="button button--sm fg--dark"
+						>
 							Shop blank cards{" "}
 							<div className="icon icon--bag icon--dark icon--md" />
 						</a>
