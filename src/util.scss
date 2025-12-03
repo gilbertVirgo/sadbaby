@@ -34,6 +34,7 @@ $breakpoints: (
 	"lg": 1024px,
 	"xl": 1280px,
 	"xxl": 1536px,
+	"xxxl": 1920px,
 );
 
 @function bp($name) {
@@ -240,7 +241,7 @@ $icons: (
 .fg {
 	@each $name, $color in $colors {
 		&--#{$name} {
-			color: $color;
+			color: $color !important;
 		}
 	}
 }
@@ -249,7 +250,7 @@ $icons: (
 .bg {
 	@each $name, $color in $colors {
 		&--#{$name} {
-			background-color: $color;
+			background-color: $color !important;
 		}
 	}
 }

@@ -16,6 +16,94 @@ const clearStoredData = () => {
 	}
 };
 
+const saveOrderToDatabase = async (sessionId) => {
+	try {
+		// Fetch session data from Stripe
+		const sessionResponse = await fetch(
+			`/.netlify/functions/getStripeSession?session_id=${sessionId}`
+		);
+
+		if (!sessionResponse.ok) {
+			throw new Error("Failed to retrieve session data");
+		}
+
+		const sessionData = await sessionResponse.json();
+		console.log("Session data from Stripe:", sessionData);
+
+		const orderType = sessionData.metadata.orderType;
+		const formData = JSON.parse(sessionData.metadata.orderData);
+
+		console.log("Order type:", orderType);
+		console.log("Form data:", formData);
+
+		let orderData;
+
+		if (orderType === "send-a-card") {
+			orderData = {
+				orderType,
+				stripeSessionId: sessionId,
+				email: formData.email,
+				delivery: {
+					name: formData.name,
+					address1: formData.address1,
+					address2: formData.address2,
+					city: formData.city,
+					postcode: formData.postcode,
+					shipping: formData.shipping,
+				},
+				sendACard: {
+					cardId: formData.selectedCardId,
+					message: formData.message,
+				},
+			};
+		} else if (orderType === "blank-cards") {
+			orderData = {
+				orderType,
+				stripeSessionId: sessionId,
+				email: formData.email,
+				delivery: {
+					name: formData.name,
+					address1: formData.address1,
+					address2: formData.address2,
+					city: formData.city,
+					postcode: formData.postcode,
+					shipping: formData.shipping,
+				},
+				blankCards: {
+					selectedCards: formData.quantities,
+					totalQuantity: Object.values(
+						formData.quantities || {}
+					).reduce((sum, qty) => sum + qty, 0),
+				},
+			};
+		} else {
+			console.warn("Unknown order type:", orderType);
+			return;
+		}
+
+		console.log("Sending order data to backend:", orderData);
+
+		// Send order to backend
+		const response = await fetch("/.netlify/functions/createOrder", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(orderData),
+		});
+
+		if (!response.ok) {
+			throw new Error("Failed to save order");
+		}
+
+		const result = await response.json();
+		console.log("Order saved successfully:", result.orderId);
+	} catch (error) {
+		console.error("Error saving order to database:", error);
+		// Don't block the user - they've already paid
+	}
+};
+
 export default () => {
 	const navigate = useNavigate();
 	const [searchParams] = useSearchParams();
@@ -28,8 +116,11 @@ export default () => {
 			return;
 		}
 
-		// Clear localStorage on successful checkout
-		clearStoredData();
+		// Save order to database before clearing localStorage
+		saveOrderToDatabase(sessionId).finally(() => {
+			// Clear localStorage after saving (or failing to save)
+			clearStoredData();
+		});
 	}, [sessionId, navigate]);
 
 	// Don't render anything if no session_id (will redirect)

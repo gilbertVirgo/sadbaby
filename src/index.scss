@@ -5,9 +5,22 @@ p.small {
 	font-size: calc((sp(sm) + sp(xs)) / 2);
 }
 
-p.hint {
+.hint {
 	font-size: sp(xs);
 	color: color("dark-overlay");
+}
+
+.error-message {
+	font-size: sp(xs);
+	color: color("primary");
+	margin-top: sp(xxxs);
+	display: block;
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+}
+
+.group-hz > .flex-1 {
+	min-width: 0;
 }
 
 .button {
@@ -39,7 +52,7 @@ p.hint {
 }
 
 .container {
-	max-width: bp(xxl);
+	max-width: bp(xxxl);
 	width: 100%;
 	padding-left: sp(sm);
 	padding-right: sp(sm);
@@ -302,15 +315,22 @@ p.hint {
 	width: 100%;
 
 	@include media(0, sm) {
-		grid-template-columns: 1fr 1fr;
+		grid-template-columns: repeat(2, 1fr);
 	}
 
 	@include media(sm, md) {
-		grid-template-columns: 1fr 1fr 1fr;
+		grid-template-columns: repeat(3, 1fr);
 	}
 
 	@include media(md) {
-		grid-template-columns: 1fr 1fr 1fr 1fr;
+		grid-template-columns: repeat(4, 1fr);
+	}
+
+	@include media(lg) {
+		grid-template-columns: repeat(5, 1fr);
+	}
+	@include media(xl) {
+		grid-template-columns: repeat(6, 1fr);
 	}
 }
 
@@ -356,7 +376,7 @@ p.hint {
 }
 
 .blank-cards-choose__card-skeleton {
-	aspect-ratio: 1 / 1;
+	aspect-ratio: 4 / 5;
 	background-color: color("grey");
 	animation: skeleton-pulse 1.5s ease infinite alternate;
 }
@@ -610,6 +630,33 @@ p.hint {
 	background: transparent;
 	line-height: 125%;
 	letter-spacing: 1%;
+	overflow: hidden;
+}
+
+.about-us__container {
+	@include media(md) {
+		display: flex;
+		flex-direction: row;
+
+		max-width: bp(xl);
+
+		.about-us__content,
+		.about-us__image-wrapper {
+			flex: 1;
+		}
+
+		.about-us__content {
+			justify-content: center;
+			padding: 0 sp(xl);
+		}
+	}
+}
+
+.about-us__image {
+	@include media(0, md) {
+		aspect-ratio: 1 / 1;
+		object-fit: cover;
+	}
 }
 
 // .message-input__wrapper {

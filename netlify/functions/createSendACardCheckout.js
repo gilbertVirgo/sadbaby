@@ -12,35 +12,30 @@ export const handler = async (event, context) => {
 
 	try {
 		const stripe = createStripeInstance();
-		const {
-			shipping,
-			email,
-			address1,
-			address2,
-			city,
-			postcode,
-			message,
-			cardId,
-			cardTitle,
-		} = JSON.parse(event.body);
+		const data = JSON.parse(event.body);
 
 		const lineItems = buildLineItems(
 			"price_1SYvnmJYOXC3lpM94TWTqd7S", // Send a card product
-			shipping,
+			data.shipping,
 			"price_1SYvp0JYOXC3lpM9l6eIzCiv" // First class shipping
 		);
 
 		return await createCheckoutSession(stripe, {
 			lineItems,
-			email,
+			email: data.email,
 			metadata: {
-				address1,
-				address2: address2 || "",
-				city,
-				postcode,
-				message,
-				cardId,
-				cardTitle: cardTitle || "",
+				orderType: "send-a-card",
+				orderData: JSON.stringify({
+					name: data.name,
+					address1: data.address1,
+					address2: data.address2 || "",
+					city: data.city,
+					postcode: data.postcode,
+					shipping: data.shipping,
+					email: data.email,
+					selectedCardId: data.selectedCardId,
+					message: data.message,
+				}),
 			},
 			successUrl: `${process.env.URL}/checkout-success?session_id={CHECKOUT_SESSION_ID}`,
 			cancelUrl: `${process.env.URL}/send-a-card`,

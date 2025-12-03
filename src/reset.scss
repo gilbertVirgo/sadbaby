@@ -137,6 +137,19 @@ input {
 	padding: sp(xxs) sp(xs);
 	box-sizing: border-box;
 	background: unset;
+	transition: border-color 0.2s ease;
+
+	&.error {
+		border-color: color("primary");
+	}
+
+	&:focus {
+		border-color: color("dark");
+	}
+
+	&.error:focus {
+		border-color: color("primary");
+	}
 }
 
 // Custom radio button

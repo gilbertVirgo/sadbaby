@@ -2,7 +2,13 @@ import { useCallback } from "react";
 import StepNavWrapper from "../../BlankCards/StepNavWrapper";
 import CardGrid from "../../../components/CardGrid";
 
-export default ({ data, setData, onNext, cards }) => {
+export default ({
+	data,
+	setData,
+	onNext,
+	cards = [],
+	loadingCards = false,
+}) => {
 	const selectedCardId = data.selectedCardId || null;
 
 	const handleCardSelect = (card) => {
@@ -31,6 +37,7 @@ export default ({ data, setData, onNext, cards }) => {
 						selectedCards={selectedCardId}
 						onCardSelect={handleCardSelect}
 						cards={cards}
+						loadingCards={loadingCards}
 					/>
 				</div>
 			</div>

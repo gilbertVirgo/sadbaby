@@ -2,10 +2,16 @@ import { useState } from "react";
 import StepNavWrapper from "../StepNavWrapper";
 import ConfirmStep from "../../../components/ConfirmStep";
 
-export default ({ data, setData, onBack, onEditStep }) => {
+export default ({
+	data,
+	setData,
+	onBack,
+	onEditStep,
+	cards = [],
+	loadingCards = false,
+}) => {
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState(null);
-	const cards = data.cards || [];
 
 	const sections = [
 		{

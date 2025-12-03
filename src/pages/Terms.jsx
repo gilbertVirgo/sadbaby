@@ -5,10 +5,8 @@ export default () => {
 				<section className="group-vt gap--xxs">
 					<h1>Terms &amp; Conditions</h1>
 					<p>
-						<strong>Last updated:</strong> Saturday 29 November,
-						2025
-					</p>
-
+						<strong>Last updated:</strong> Tuesday 3 December, 2025
+					</p>{" "}
 					<p>
 						These Terms &amp; Conditions set out the rules for using
 						our website and purchasing products from us. By placing
@@ -56,7 +54,30 @@ export default () => {
 						harmful content).
 					</p>
 
-					<h2>3. Prices &amp; Payment</h2>
+					<h2>3. Customer Responsibility for Information Accuracy</h2>
+					<p>
+						You are solely responsible for ensuring that all
+						information you provide during the ordering process is
+						accurate and complete, including but not limited to:
+					</p>
+					<ul>
+						<li>Email addresses for order confirmations</li>
+						<li>Delivery addresses for recipients or yourself</li>
+						<li>
+							Personalised messages (spelling, grammar, and
+							content)
+						</li>
+						<li>Recipient names and any other custom details</li>
+					</ul>
+					<p>
+						We will process your order exactly as submitted. We are
+						not responsible for any errors, delays, or non-delivery
+						caused by incorrect information provided by you. Please
+						carefully review all details before completing your
+						purchase.
+					</p>
+
+					<h2>4. Prices &amp; Payment</h2>
 					<p>
 						All prices shown on the website are in GBP (£). Payment
 						must be made in full at the time of ordering. We may
@@ -64,7 +85,7 @@ export default () => {
 						orders already placed.
 					</p>
 
-					<h2>4. Delivery</h2>
+					<h2>5. Delivery</h2>
 					<p>We offer the following postage options:</p>
 					<ul>
 						<li>Royal Mail First Class</li>
@@ -87,7 +108,7 @@ export default () => {
 						a replacement or a refund at our discretion.
 					</p>
 
-					<h2>5. Cancellations &amp; Changes</h2>
+					<h2>6. Cancellations &amp; Changes</h2>
 					<p>
 						Because many orders involve personalisation, we can only
 						cancel or amend an order if you contact us{" "}
@@ -107,7 +128,7 @@ export default () => {
 						responsibility.
 					</p>
 
-					<h2>6. Returns &amp; Refunds</h2>
+					<h2>7. Returns &amp; Refunds</h2>
 					<h3>Personalised Cards</h3>
 					<p>
 						Due to the custom nature of these items, personalised
@@ -122,7 +143,7 @@ export default () => {
 						possible. We will offer a replacement or refund.
 					</p>
 
-					<h2>7. Use of Our Website</h2>
+					<h2>8. Use of Our Website</h2>
 					<p>
 						You agree not to misuse the website, attempt
 						unauthorised access, or use the site in any way that
@@ -135,7 +156,7 @@ export default () => {
 						reproduced without permission.
 					</p>
 
-					<h2>8. Privacy</h2>
+					<h2>9. Privacy</h2>
 					<p>
 						We only use your personal information to process and
 						deliver your order, and to communicate with you about
@@ -144,7 +165,7 @@ export default () => {
 						full details, see our Privacy Policy below.
 					</p>
 
-					<h2>9. Liability</h2>
+					<h2>10. Liability</h2>
 					<p>We are not responsible for:</p>
 					<ul>
 						<li>
@@ -165,13 +186,13 @@ export default () => {
 						price paid for your order.
 					</p>
 
-					<h2>10. Changes to These Terms</h2>
+					<h2>11. Changes to These Terms</h2>
 					<p>
 						We may update these Terms &amp; Conditions occasionally.
 						The latest version will always be posted on this page.
 					</p>
 
-					<h2>11. Contact Us</h2>
+					<h2>12. Contact Us</h2>
 					<p>
 						If you have any questions or concerns, please contact us
 						at:{" "}

@@ -2,7 +2,14 @@ import { useState } from "react";
 import StepNavWrapper from "../../BlankCards/StepNavWrapper";
 import ConfirmStep from "../../../components/ConfirmStep";
 
-export default ({ data, setData, onBack, onEditStep, cards }) => {
+export default ({
+	data,
+	setData,
+	onBack,
+	onEditStep,
+	cards = [],
+	loadingCards = false,
+}) => {
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState(null);
 	const selectedCard = cards.find((c) => c._id === data.selectedCardId);
@@ -13,7 +20,9 @@ export default ({ data, setData, onBack, onEditStep, cards }) => {
 		{
 			title: "Your card",
 			editStepIndex: 0,
-			content: selectedCard ? (
+			content: loadingCards ? (
+				<p>Loading...</p>
+			) : selectedCard ? (
 				<div
 					style={{
 						maxWidth: "200px",

@@ -43,6 +43,17 @@ function App() {
 						<div className="icon icon--instagram icon--md icon--dark" />
 						<span>sadbaby.cards</span>
 					</a>
+					<ul className="group-hz gap--md footer__links">
+						{[
+							{ href: "/terms", text: "Terms & Conditions" },
+							{ href: "/privacy", text: "Privacy Policy" },
+							{ href: "/about-us", text: "About Us" },
+						].map((link) => (
+							<li key={link.href} className="hint">
+								<a href={link.href}>{link.text}</a>
+							</li>
+						))}
+					</ul>
 				</div>
 			</footer>
 		</BrowserRouter>

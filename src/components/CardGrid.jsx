@@ -5,45 +5,16 @@ export default ({
 	selectedCards,
 	mode = "single",
 	maxCards = 1,
-	cards: propCards,
-	onCardsLoaded,
+	cards = [],
+	loadingCards = false,
 }) => {
-	const [cards, setCards] = useState(propCards || []);
-	const [loading, setLoading] = useState(!propCards);
-	const [error, setError] = useState(null);
+	const [loading, setLoading] = useState(loadingCards);
 	const [imagesLoaded, setImagesLoaded] = useState(0);
 
-	// Update cards if props change
+	// Update loading state when cards prop changes
 	useEffect(() => {
-		if (propCards) {
-			setCards(propCards);
-		}
-	}, [propCards]);
-
-	// Fetch cards only if not provided via props
-	useEffect(() => {
-		if (propCards) return;
-
-		const fetchCards = async () => {
-			try {
-				const response = await fetch("/.netlify/functions/getCards");
-				if (!response.ok) {
-					throw new Error("Failed to fetch cards");
-				}
-				const fetchedCards = await response.json();
-				setCards(fetchedCards);
-				// Call the callback if provided
-				if (onCardsLoaded) {
-					onCardsLoaded(fetchedCards);
-				}
-			} catch (err) {
-				setError(err.message);
-				setLoading(false);
-			}
-		};
-
-		fetchCards();
-	}, [propCards, onCardsLoaded]);
+		setLoading(loadingCards);
+	}, [loadingCards]);
 
 	useEffect(() => {
 		if (cards.length > 0 && imagesLoaded === cards.length) {
@@ -54,10 +25,6 @@ export default ({
 	const handleImageLoad = () => {
 		setImagesLoaded((prev) => prev + 1);
 	};
-
-	if (error) {
-		return <p>Error loading cards: {error}</p>;
-	}
 
 	return (
 		<>

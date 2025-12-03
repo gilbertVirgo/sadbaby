@@ -1,4 +1,5 @@
 import React from "react";
+import { FadeInView } from "../components/FadeInView";
 
 export default () => {
 	let [accordionOpenIndex, setAccordionOpenIndex] = React.useState(0);
@@ -25,7 +26,10 @@ export default () => {
 				</video>
 
 				<div className="video-hero__container container group-vt gap--xl hz--center">
-					<div className="group-vt gap--md hz--center">
+					<FadeInView
+						delay={0}
+						className="group-vt gap--md hz--center"
+					>
 						<h1 className="talign--center">
 							Thoughtful cards,
 							<br />
@@ -36,8 +40,9 @@ export default () => {
 							<br />
 							Posted with care from our East London studio.
 						</p>
-					</div>
-					<div className="group-hz gap--sm">
+					</FadeInView>
+
+					<FadeInView delay={0.16} className="group-hz gap--sm">
 						<a
 							href="/send-a-card"
 							className="button button--md fg--light"
@@ -52,16 +57,20 @@ export default () => {
 							Shop blank cards{" "}
 							<div className="icon icon--bag icon--light icon--md" />
 						</a>
-					</div>
+					</FadeInView>
 				</div>
 			</header>
 			<section className="wrapper">
 				<div className="container container--xl group-vt gap--xl hz--center">
-					<div className="group-vt gap--md hz--center">
+					<FadeInView
+						delay={0.32}
+						className="group-vt gap--md hz--center"
+					>
 						<div className="group-vt gap--sm talign--center">
 							<h2>
 								From you, <em>to them</em>
 							</h2>
+
 							<p>
 								Choose a design, add your message, and we’ll
 								print,
@@ -70,6 +79,7 @@ export default () => {
 								recipient.
 							</p>
 						</div>
+
 						<a
 							href="/send-a-card"
 							className="button button--sm fg--dark"
@@ -77,7 +87,8 @@ export default () => {
 							Send a card{" "}
 							<div className="icon icon--plane icon--dark icon--md" />
 						</a>
-					</div>
+					</FadeInView>
+
 					<div className="sac-process__wrapper">
 						{[
 							{
@@ -96,7 +107,11 @@ export default () => {
 								body: "Your card is printed, packed, and posted directly to your recipient.",
 							},
 						].map((step, index) => (
-							<div key={index} className="sac-process__step">
+							<FadeInView
+								delay={index * 0.16 + 0.32}
+								key={index}
+								className="sac-process__step"
+							>
 								<div
 									className={`sac-process__icon icon icon--${step.icon} icon--xl icon--dark`}
 								/>
@@ -104,20 +119,19 @@ export default () => {
 									<h3>{step.title}</h3>
 									<p>{step.body}</p>
 								</div>
-							</div>
+							</FadeInView>
 						))}
 					</div>
 				</div>
 			</section>
 			<section className="wrapper">
-				<div className="showcase__container container container--sm">
+				<FadeInView className="showcase__container container container--sm">
 					<div className="showcase-image__wrapper hide--md-down">
 						<img
 							src="/prefer-handwriting.jpg"
 							alt="Prefer handwriting?"
 						/>
-					</div>
-
+					</div>{" "}
 					<div className="showcase-text__wrapper group-vt gap--lg">
 						<div className="group-vt gap--sm">
 							<h2>Prefer handwriting?</h2>
@@ -139,13 +153,15 @@ export default () => {
 							<div className="icon icon--bag icon--dark icon--md" />
 						</a>
 					</div>
-				</div>
+				</FadeInView>
 			</section>
 			<section className="wrapper">
 				<div className="container container--xl group-vt gap--xl hz--center">
-					<h2 className="talign--center">
-						Questions we&apos;re often asked...
-					</h2>
+					<FadeInView>
+						<h2 className="talign--center">
+							Questions we&apos;re often asked...
+						</h2>
+					</FadeInView>
 					<div className="max-width--xs group-vt">
 						{[
 							{
@@ -180,7 +196,8 @@ export default () => {
 							let isOpen = accordionOpenIndex === index;
 
 							return (
-								<div
+								<FadeInView
+									delay={0.16 * index + 0.16}
 									key={index}
 									className={`faq__accordion ${
 										isOpen ? "faq__accordion--open" : ""
@@ -202,7 +219,7 @@ export default () => {
 											<p>{faq.body}</p>
 										</div>
 									</div>
-								</div>
+								</FadeInView>
 							);
 						})}
 					</div>

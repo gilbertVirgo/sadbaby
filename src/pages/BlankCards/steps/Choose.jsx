@@ -2,28 +2,18 @@ import { useState, useCallback } from "react";
 import StepNavWrapper from "../StepNavWrapper";
 import CardGrid from "../../../components/CardGrid";
 
-export default ({ data, setData, onNext }) => {
-	const [cards, setCards] = useState(data.cards || []);
-
+export default ({
+	data,
+	setData,
+	onNext,
+	cards = [],
+	loadingCards = false,
+}) => {
 	const quantities = data.quantities || {};
 
 	const totalCards = Object.values(quantities).reduce(
 		(sum, qty) => sum + qty,
 		0
-	);
-
-	const handleCardsLoaded = useCallback(
-		(loadedCards) => {
-			setCards(loadedCards);
-			// Save cards to data if not already saved
-			if (!data.cards) {
-				setData({
-					...data,
-					cards: loadedCards,
-				});
-			}
-		},
-		[data, setData]
 	);
 
 	const addCard = (cardId) => {
@@ -92,7 +82,8 @@ export default ({ data, setData, onNext }) => {
 						selectedCards={quantities}
 						onCardSelect={handleCardClick}
 						maxCards={4}
-						onCardsLoaded={handleCardsLoaded}
+						cards={cards}
+						loadingCards={loadingCards}
 					/>
 				</div>
 			</div>
