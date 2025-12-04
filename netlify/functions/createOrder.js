@@ -68,7 +68,7 @@ export const handler = async (event) => {
 		}
 
 		// Create new order
-		const order = new Order({
+		const order = new OrderModel({
 			orderType: orderData.orderType,
 			stripeSessionId: orderData.stripeSessionId,
 			email: orderData.email,
