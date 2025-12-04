@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useRef, useEffect } from "react";
 import StepNavWrapper from "../StepNavWrapper";
 import CardGrid from "../../../components/CardGrid";
 
@@ -10,6 +10,10 @@ export default ({
 	loadingCards = false,
 }) => {
 	const quantities = data.quantities || {};
+
+	// Animation state: store details of the most recently added card
+	const lastAddedRef = useRef(null); // DOM node of the selected card button in step nav
+	const animInfoRef = useRef(null); // { cardId, startX, startY, targetIndex }
 
 	const totalCards = Object.values(quantities).reduce(
 		(sum, qty) => sum + qty,
@@ -42,7 +46,18 @@ export default ({
 		}
 	};
 
-	const handleCardClick = (card, index) => {
+	const handleCardClick = (card, index, e) => {
+		// Capture cursor position before state update
+		if (totalCards < 4) {
+			const currentQty = quantities[card._id] || 0;
+			animInfoRef.current = {
+				cardId: card._id,
+				startX: e.clientX,
+				startY: e.clientY,
+				targetIndex: currentQty, // the new button will render at this index
+			};
+		}
+
 		addCard(card._id);
 
 		const currentQty = quantities[card._id] || 0;
@@ -62,6 +77,43 @@ export default ({
 			}, 3000);
 		}
 	};
+
+	// After render, if we have a last-added element and anim info, compute deltas and trigger animation
+	useEffect(() => {
+		const node = lastAddedRef.current;
+		const info = animInfoRef.current;
+		if (!node || !info) return;
+
+		const rect = node.getBoundingClientRect();
+		const targetCenterX = rect.left + rect.width / 2;
+		const targetCenterY = rect.top + rect.height / 2;
+		const deltaX = info.startX - targetCenterX;
+		const deltaY = info.startY - targetCenterY;
+
+		// Set initial transform without transition
+		node.style.transition = "none";
+		node.style.transform = `translate(${deltaX}px, ${deltaY}px) scale(1.5)`;
+		node.style.willChange = "transform";
+
+		// Next frame: enable transition and move to final position
+		requestAnimationFrame(() => {
+			node.style.transition =
+				"transform 0.44s cubic-bezier(0.25, 0.8, 0.25, 1)";
+			node.style.transform = "translate(0px, 0px) scale(1)";
+		});
+
+		// Cleanup anim info so subsequent renders don't retrigger
+		animInfoRef.current = null;
+
+		const onEnd = () => {
+			node.style.transition = "";
+			node.style.transform = "";
+			node.style.willChange = "";
+			node.removeEventListener("transitionend", onEnd);
+			lastAddedRef.current = null;
+		};
+		node.addEventListener("transitionend", onEnd);
+	});
 
 	return (
 		<>
@@ -99,6 +151,24 @@ export default ({
 									className="blank-cards-choose__selected-card"
 									key={`selected-card-${cardId}-${index}`}
 									onClick={() => removeCard(card._id)}
+									// Attach ref only for the most recent addition
+									ref={(el) => {
+										const info = animInfoRef.current;
+										if (
+											el &&
+											info &&
+											info.cardId === cardId &&
+											info.targetIndex === index
+										) {
+											lastAddedRef.current = el;
+										}
+									}}
+									style={{
+										// Initial transform is set dynamically via useEffect
+										transition:
+											"transform 330ms cubic-bezier(0.25, 0.8, 0.25, 1)",
+										willChange: "transform",
+									}}
 								>
 									<div className="blank-cards-choose__selected-card-icon-wrapper">
 										<span className="icon icon--sm icon--light" />
@@ -134,6 +204,8 @@ export default ({
 					) : null}
 				</div>
 			</StepNavWrapper>
+
+			{/* No extra CSS needed; transition is applied inline for reliability */}
 		</>
 	);
 };

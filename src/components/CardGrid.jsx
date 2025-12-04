@@ -93,8 +93,8 @@ export default ({
 												? "blank-cards-choose__button--selected"
 												: ""
 										}`}
-										onClick={() =>
-											onCardSelect(card, index)
+										onClick={(e) =>
+											onCardSelect(card, index, e)
 										}
 									>
 										{(selectedCards[card._id] || 0) > 0 && (

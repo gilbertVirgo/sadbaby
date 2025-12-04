@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import StepNavWrapper from "../../BlankCards/StepNavWrapper";
 import CardGrid from "../../../components/CardGrid";
 
@@ -10,13 +10,27 @@ export default ({
 	loadingCards = false,
 }) => {
 	const selectedCardId = data.selectedCardId || null;
+	const justSelectedRef = useRef(false);
 
 	const handleCardSelect = (card) => {
 		setData({
 			...data,
 			selectedCardId: card._id,
 		});
+		justSelectedRef.current = true;
 	};
+
+	// Auto-advance only after fresh selection, not on re-render with pre-selected card
+	useEffect(() => {
+		if (selectedCardId && justSelectedRef.current) {
+			justSelectedRef.current = false;
+			const timer = setTimeout(() => {
+				onNext();
+			}, 330); // 0.33 seconds
+
+			return () => clearTimeout(timer);
+		}
+	}, [selectedCardId, onNext]);
 
 	return (
 		<>
