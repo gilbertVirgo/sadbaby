@@ -43,7 +43,23 @@ export const getStoredStep = (stepKey) => {
 		if (typeof window !== "undefined") {
 			const saved = localStorage.getItem(stepKey);
 			if (saved) {
-				return parseInt(saved, 10);
+				// Try to parse as JSON first (new format with timestamp)
+				try {
+					const { step, timestamp } = JSON.parse(saved);
+					const now = Date.now();
+
+					// Check if step is expired (older than 1 hour)
+					if (now - timestamp > ONE_HOUR) {
+						localStorage.removeItem(stepKey);
+						return 0;
+					}
+
+					return step;
+				} catch {
+					// Fall back to old format (plain number) for backwards compatibility
+					// but treat it as expired since we don't have a timestamp
+					return 0;
+				}
 			}
 		}
 	} catch (e) {
@@ -55,7 +71,11 @@ export const getStoredStep = (stepKey) => {
 export const setStoredStep = (stepKey, step) => {
 	try {
 		if (typeof window !== "undefined") {
-			localStorage.setItem(stepKey, step.toString());
+			const stepWithTimestamp = {
+				step,
+				timestamp: Date.now(),
+			};
+			localStorage.setItem(stepKey, JSON.stringify(stepWithTimestamp));
 		}
 	} catch (e) {
 		console.warn("localStorage access denied:", e);
