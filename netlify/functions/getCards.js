@@ -19,6 +19,9 @@ export const handler = async (event, context) => {
 	try {
 		await connectToDatabase();
 
+		console.log("Card model type:", typeof Card);
+		console.log("Card.find type:", typeof Card?.find);
+		console.log("Card keys:", Object.keys(Card || {}));
 		const cards = await Card.find({});
 
 		return {

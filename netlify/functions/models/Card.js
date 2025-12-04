@@ -18,5 +18,8 @@ cardSchema.virtual("imageURL").get(function () {
 cardSchema.set("toJSON", { virtuals: true });
 cardSchema.set("toObject", { virtuals: true });
 
-// Avoid model recompilation issues across Lambda invocations
-export default mongoose.models.Card || mongoose.model("Card", cardSchema);
+// Ensure we always return the Mongoose model, not a partial object
+const CardModel = mongoose.models.Card
+	? mongoose.model("Card")
+	: mongoose.model("Card", cardSchema);
+export default CardModel;

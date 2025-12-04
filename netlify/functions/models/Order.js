@@ -89,4 +89,8 @@ const orderSchema = new mongoose.Schema(
 orderSchema.index({ email: 1, createdAt: -1 });
 orderSchema.index({ fulfillmentStatus: 1, createdAt: -1 });
 
-export default mongoose.model("Order", orderSchema);
+// Ensure we always return the Mongoose model, not a partial object
+const OrderModel = mongoose.models.Order
+	? mongoose.model("Order")
+	: mongoose.model("Order", orderSchema);
+export default OrderModel;
