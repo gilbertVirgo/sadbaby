@@ -21,9 +21,8 @@ export default () => {
 					playsInline
 					autoPlay
 					loop
-				>
-					<source src="/landing-video.mp4" type="video/mp4" />
-				</video>
+					src="/landing-video.mp4"
+				/>
 
 				<div className="video-hero__container container group-vt gap--xl hz--center">
 					<FadeInView
