@@ -18,4 +18,5 @@ cardSchema.virtual("imageURL").get(function () {
 cardSchema.set("toJSON", { virtuals: true });
 cardSchema.set("toObject", { virtuals: true });
 
-export default mongoose.model("Card", cardSchema);
+// Avoid model recompilation issues across Lambda invocations
+export default mongoose.models.Card || mongoose.model("Card", cardSchema);
