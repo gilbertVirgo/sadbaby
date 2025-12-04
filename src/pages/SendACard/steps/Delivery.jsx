@@ -65,7 +65,9 @@ export default ({ data, setData, onBack, onNext }) => {
 					</button>
 					{!isValid && (
 						<p className="hint">
-							Please fill out all required fields.
+							Please fill out all required (
+							<span className="required--asterisk" />) fields to
+							proceed.
 						</p>
 					)}
 				</div>

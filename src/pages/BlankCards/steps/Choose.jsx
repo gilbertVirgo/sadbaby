@@ -141,7 +141,7 @@ export default ({
 			</div>
 			<StepNavWrapper isSticky>
 				<div className="group-vt gap--xxs hz--start talign--center">
-					<div className="group-hz gap--xxs">
+					<div className="group-hz gap--xxs wrap--xs-down">
 						{Object.entries(quantities).map(([cardId, qty]) => {
 							let card = cards.find((c) => c._id === cardId);
 							if (qty === 0 || !card) return null;

@@ -48,7 +48,7 @@ export default ({
 				}}
 			>
 				{loading
-					? Array.from({ length: 8 }, (_, index) => (
+					? Array.from({ length: 12 }, (_, index) => (
 							<div
 								key={index}
 								className="blank-cards-choose__card-skeleton"

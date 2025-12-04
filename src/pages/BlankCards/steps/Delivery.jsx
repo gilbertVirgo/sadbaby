@@ -44,7 +44,7 @@ export default ({ data, setData, onBack, onNext }) => {
 				</div>
 			</div>
 			<StepNavWrapper isSticky>
-				<div className="group-vt gap--xs hz--end">
+				<div className="group-vt gap--xs">
 					<button
 						type="button"
 						onClick={onBack}
@@ -54,11 +54,12 @@ export default ({ data, setData, onBack, onNext }) => {
 						Back: choose
 					</button>
 				</div>
-				<div className="group-vt gap--xxs hz--end">
+				<div className="group-vt gap--xxs">
 					<button
 						type="submit"
 						className="button button--xs fg--dark"
 						disabled={!isValid}
+						style={{ alignSelf: "flex-end" }}
 					>
 						Next: confirm
 						<div className="icon icon--right-arrow icon--dark icon--md" />

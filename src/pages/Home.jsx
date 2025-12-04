@@ -21,7 +21,7 @@ export default () => {
 					playsInline
 					autoPlay
 					loop
-					src="/landing-video.mp4"
+					src="https://denw90a2l8ovn.cloudfront.net/landing-video.mp4"
 				/>
 
 				<div className="video-hero__container container group-vt gap--xl hz--center">
@@ -29,19 +29,31 @@ export default () => {
 						delay={0}
 						className="group-vt gap--md hz--center"
 					>
-						<h1 className="talign--center">
+						<h1
+							className="talign--center"
+							style={{ letterSpacing: "-0.05rem" }}
+						>
 							Thoughtful cards,
 							<br />
-							<em>simply crafted</em>
+							<em
+								style={{
+									position: "relative",
+									left: "-0.5rem",
+								}}
+							>
+								simply crafted
+							</em>
 						</h1>
-						<p className="talign--center">
+						<p className="talign--center text-balance max-width--xs">
 							Hand-printed linocut cards on 100% recycled paper.
-							<br />
 							Posted with care from our East London studio.
 						</p>
 					</FadeInView>
 
-					<FadeInView delay={0.16} className="group-hz gap--sm">
+					<FadeInView
+						delay={0.16}
+						className="group-hz gap--sm wrap--xs-down hz--center"
+					>
 						<a
 							href="/send-a-card"
 							className="button button--md fg--light"
@@ -127,7 +139,7 @@ export default () => {
 				<FadeInView className="showcase__container container container--sm">
 					<div className="showcase-image__wrapper hide--md-down">
 						<img
-							src="/prefer-handwriting.jpg"
+							src="https://denw90a2l8ovn.cloudfront.net/handwriting--christmas.jpg"
 							alt="Prefer handwriting?"
 						/>
 					</div>{" "}
@@ -136,7 +148,7 @@ export default () => {
 							<h2>Prefer handwriting?</h2>
 							<img
 								className="hide--md-up"
-								src="/prefer-handwriting.jpg"
+								src="https://denw90a2l8ovn.cloudfront.net/handwriting--christmas.jpg"
 								alt="Prefer handwriting?"
 							/>
 							<p>
