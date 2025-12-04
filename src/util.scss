@@ -281,14 +281,13 @@ $icons: (
 
 // Button Utility Classes
 .button {
-	line-height: 125%;
-
 	@each $name, $size in $spacings {
 		&--#{$name} {
 			column-gap: calc($size * 0.25);
 			padding: calc($size * 0.5) calc($size * 1.25);
 
 			@include media($max: "xs") {
+				font-size: 0.9rem;
 				column-gap: calc($size);
 				padding: calc($size * 0.33) calc($size);
 			}

@@ -24,12 +24,13 @@ p.small {
 }
 
 .button {
-	@extend .group-hz, .gap--xs;
+	@extend .group-hz, .gap--xs, .vt--center;
 
 	border: 1px solid $color--primary;
 	border-radius: sp(xl);
-	width: fit-content;
+	width: max-content;
 	height: fit-content;
+	line-height: 125%;
 
 	@extend .transition--short;
 	transform-origin: center center;

@@ -155,8 +155,8 @@ input {
 // Custom radio button
 input[type="radio"] {
 	appearance: none;
-	width: sp(sm);
-	height: sp(sm);
+	width: sp(md);
+	height: sp(md);
 	padding: 0;
 	border: none;
 	background-image: url("/icons/radio--off.svg");
@@ -178,8 +178,8 @@ input[type="radio"] {
 // Custom checkbox
 input[type="checkbox"] {
 	appearance: none;
-	width: sp(sm);
-	height: sp(sm);
+	width: sp(md);
+	height: sp(md);
 	padding: 0;
 	border: none;
 	background-image: url("/icons/checkbox--off.svg");
