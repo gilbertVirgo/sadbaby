@@ -18,8 +18,6 @@ cardSchema.virtual("imageURL").get(function () {
 cardSchema.set("toJSON", { virtuals: true });
 cardSchema.set("toObject", { virtuals: true });
 
-// Ensure we always return the Mongoose model, not a partial object
-const CardModel = mongoose.models.Card
-	? mongoose.model("Card")
-	: mongoose.model("Card", cardSchema);
-export default CardModel;
+const CardModel = mongoose.models.Card || mongoose.model("Card", cardSchema);
+
+export { CardModel };

@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import Order from "./models/Order.js";
+import { OrderModel } from "./models/Order.js";
 
 let isConnected = false;
 
@@ -53,7 +53,7 @@ export const handler = async (event) => {
 		}
 
 		// Check if order already exists
-		const existingOrder = await Order.findOne({
+		const existingOrder = await OrderModel.findOne({
 			stripeSessionId: orderData.stripeSessionId,
 		});
 
