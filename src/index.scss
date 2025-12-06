@@ -217,6 +217,10 @@ p.small {
 			text-align: center;
 			align-items: center;
 
+			.pill {
+				align-self: center;
+			}
+
 			p {
 				text-wrap: balance;
 			}
@@ -232,7 +236,6 @@ p.small {
 
 	@include media(md) {
 		align-items: center;
-		gap: sp(xl);
 		flex-direction: row;
 
 		img {
@@ -247,6 +250,7 @@ p.small {
 	}
 
 	@include media(md, lg) {
+		column-gap: sp(xl);
 		.showcase-image__wrapper {
 			flex: 1;
 
@@ -257,6 +261,13 @@ p.small {
 	}
 
 	@include media(lg) {
+		row-gap: 0;
+
+		.showcase-text__wrapper {
+			padding-left: sp(xl);
+			padding-right: sp(xl);
+		}
+
 		.showcase-image__wrapper {
 			flex: 2;
 
@@ -660,19 +671,198 @@ p.small {
 	}
 }
 
-// .message-input__wrapper {
+.feature__container {
+	display: grid;
+	width: 100%;
+
+	@include media(lg) {
+		grid-template-columns: repeat(6, 1fr);
+
+		.feature-text__wrapper,
+		.feature-scroll__wrapper {
+			position: relative;
+			grid-row: 1;
+		}
+		.feature-text__wrapper {
+			grid-column: 1 / 4;
+			padding-left: sp(xl);
+			padding-right: sp(xl);
+			height: 100%;
+
+			z-index: 1;
+		}
+
+		.feature-scroll__wrapper {
+			grid-column: 3 / -1;
+
+			z-index: 0;
+		}
+	}
+}
+
+.feature-scroll__wrapper {
+	aspect-ratio: 16 / 9;
+	position: relative;
+	overflow: hidden;
+}
+
+.feature-scroll__container {
+	width: 100%;
+	height: 100%;
+	overflow-x: auto;
+	display: flex;
+	gap: sp(sm);
+	scroll-snap-type: x mandatory;
+
+	> img {
+		scroll-snap-align: center;
+		flex: none;
+		height: 100%;
+		aspect-ratio: 4 / 5 !important;
+	}
+}
+
+.feature-scroll__gradient {
+	position: absolute;
+	top: -5px;
+	left: -5px;
+	width: calc(100% + 10px);
+	height: calc(100% + 10px);
+	pointer-events: none;
+	z-index: 100;
+
+	background: linear-gradient(to right, color("light") 0%, transparent 25%);
+	// -webkit-mask-image: linear-gradient(
+	// 	to right,
+	// 	rgba(0, 0, 0, 0) 0%,
+	// 	rgba(0, 0, 0, 1) 10%,
+	// 	rgba(0, 0, 0, 1) 90%,
+	// 	rgba(0, 0, 0, 0) 100%
+	// );
+}
+
+// .offcanvas__wrapper {
+// 	position: fixed;
+// 	left: 0;
+// 	top: 0;
 // 	width: 100%;
-// 	max-width: bp(md);
+// 	height: 100%;
+
+// 	display: flex;
+// 	justify-content: flex-end;
+
+// 	@include media(0, md) {
+// 		flex-direction: column;
+// 	}
 // }
 
-// .message-input {
-// 	resize: none;
-// 	border: 1px solid color("grey");
-// 	padding: sp(md);
-// 	background: transparent;
+body {
+	position: relative;
 
-// 	font-size: sp(md);
-// 	line-height: 125%;
-// 	letter-spacing: 1%;
-// 	width: 100%;
-// }
+	@include media(0, md) {
+		transition: bottom 0.23s ease-in-out;
+		bottom: 0rem;
+	}
+
+	@include media(md) {
+		transition: right 0.23s ease-in-out;
+		right: 0rem;
+	}
+}
+
+body.offcanvas--open {
+	@include media(0, md) {
+		bottom: 50vh;
+		.offcanvas__wrapper {
+			bottom: 0rem;
+		}
+	}
+
+	@include media(md) {
+		right: 16rem;
+
+		.offcanvas__wrapper {
+			right: 0rem;
+		}
+	}
+
+	.offcanvas__backdrop {
+		background-color: color("light-overlay");
+	}
+}
+
+body:not(.offcanvas--open) .offcanvas__backdrop {
+	pointer-events: none;
+}
+
+.offcanvas__backdrop {
+	background-color: transparent;
+	transition: background-color 0.23s ease-in-out;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 998;
+}
+
+.offcanvas__wrapper {
+	background-color: color("light");
+	position: fixed;
+	z-index: 999;
+	overflow-y: auto;
+
+	padding: sp(md) sp(sm) sp(sm);
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+
+	@include media(0, md) {
+		width: 100%;
+		height: 50vh;
+		left: 0;
+		bottom: -50vh;
+		transition: bottom 0.23s ease-in-out;
+		border-top: 1px solid color("grey");
+		text-align: center;
+
+		> * {
+			display: flex;
+			flex-direction: column;
+			min-height: 0;
+		}
+
+		.offcanvas__title-image {
+			flex: 1;
+			gap: sp(sm) !important;
+			min-height: 0;
+
+			h3 {
+				flex-shrink: 0;
+			}
+
+			img {
+				aspect-ratio: 4 / 5;
+				width: 100%;
+				height: 100%;
+				object-fit: contain;
+				flex: 1;
+				min-height: 0;
+			}
+		}
+
+		.offcanvas__button-group {
+			align-items: center;
+		}
+	}
+
+	@include media(md) {
+		height: 100%;
+		justify-content: safe center;
+		top: 0;
+		transition: right 0.23s ease-in-out;
+		right: -16rem;
+		width: 16rem;
+		border-left: 1px solid color("grey");
+	}
+}

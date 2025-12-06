@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import {
 	useStepNavigation,
 	StepTransition,
 } from "../../hooks/useStepNavigation.jsx";
+import Seo from "../../components/Seo";
 import PickCard from "./steps/PickCard";
 import WriteMessage from "./steps/WriteMessage";
 import Delivery from "./steps/Delivery";
@@ -15,8 +17,14 @@ const STEP_KEY = "sendACardStepIndex";
 export const clearSendACardData = () => clearStoredData(STORAGE_KEY, STEP_KEY);
 
 export default () => {
+	const location = useLocation();
 	const [cards, setCards] = useState([]);
 	const [loadingCards, setLoadingCards] = useState(true);
+
+	// Clear stored data immediately when navigating with state (from FullCollection)
+	if (location.state?.selectedCardId) {
+		clearStoredData(STORAGE_KEY, STEP_KEY);
+	}
 
 	useEffect(() => {
 		const fetchCards = async () => {
@@ -48,6 +56,16 @@ export default () => {
 		formData,
 		setFormData,
 	} = useStepNavigation(STORAGE_KEY, STEP_KEY);
+
+	// Pre-fill selectedCardId from location state (from FullCollection page)
+	useEffect(() => {
+		if (location.state?.selectedCardId && !formData.selectedCardId) {
+			setFormData({
+				...formData,
+				selectedCardId: location.state.selectedCardId,
+			});
+		}
+	}, [location.state?.selectedCardId]);
 
 	const steps = [
 		<PickCard
@@ -87,8 +105,24 @@ export default () => {
 	];
 
 	return (
-		<StepTransition stepIndex={stepIndex} direction={direction}>
-			{steps[stepIndex]}
-		</StepTransition>
+		<>
+			<Seo
+				title="Send a Custom Greeting Card"
+				description="Pick a beautiful card, write your message, add delivery details, and send joy to someone special."
+				canonical="https://www.sadbaby.cards/send-a-card"
+				image="https://www.sadbaby.cards/og-image.png"
+				schemaMarkup={{
+					"@context": "https://schema.org",
+					"@type": "WebPage",
+					name: "Send a Card",
+					url: "https://www.sadbaby.cards/send-a-card",
+					description:
+						"Create and send a custom greeting card with your personal message",
+				}}
+			/>
+			<StepTransition stepIndex={stepIndex} direction={direction}>
+				{steps[stepIndex]}
+			</StepTransition>
+		</>
 	);
 };

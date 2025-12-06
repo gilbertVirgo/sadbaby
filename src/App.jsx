@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import AboutUs from "./pages/AboutUs";
 import BlankCards from "./pages/BlankCards";
 import SendACard from "./pages/SendACard";
+import FullCollection from "./pages/FullCollection";
 import NotFound from "./pages/404";
 import Nav from "./static/Nav";
 import Terms from "./pages/Terms";
@@ -16,6 +17,7 @@ function App() {
 			<Routes>
 				<Route path="/" element={<Home />} />
 				<Route path="/about-us" element={<AboutUs />} />
+				<Route path="/collection" element={<FullCollection />} />
 				<Route path="/blank-cards" element={<BlankCards />} />
 				<Route path="/send-a-card" element={<SendACard />} />
 				<Route path="/terms" element={<Terms />} />

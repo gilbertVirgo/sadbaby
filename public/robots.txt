@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Disallow: /.netlify
+Disallow: /404
+
+Sitemap: https://www.sadbaby.cards/sitemap.xml

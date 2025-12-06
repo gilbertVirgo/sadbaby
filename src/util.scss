@@ -165,6 +165,7 @@ $align-values: (
 // Icon Utility Classes
 
 $icons: (
+	"card",
 	"instagram",
 	"open-menu",
 	"close-menu",
@@ -287,8 +288,7 @@ $icons: (
 			padding: calc($size * 0.5) calc($size * 1.25);
 
 			@include media($max: "xs") {
-				font-size: 0.9rem;
-				column-gap: calc($size);
+				column-gap: calc($size * 0.5);
 				padding: calc($size * 0.33) calc($size);
 			}
 		}
@@ -347,5 +347,28 @@ $transitions: (
 @each $name, $time in $transitions {
 	.transition--#{$name} {
 		transition: all $time;
+	}
+}
+
+.pill {
+	padding: 0 sp(xxs);
+	width: max-content;
+	border-radius: sp(md);
+	font-size: sp(xs);
+
+	&:before {
+		content: "●";
+		padding-right: sp(xxxs);
+	}
+
+	@each $name, $color in $colors {
+		&--#{$name} {
+			background-color: $color;
+			color: if(
+				$name == "light" or $name == "grey" or $name == "accent",
+				$color--dark,
+				$color--light
+			);
+		}
 	}
 }

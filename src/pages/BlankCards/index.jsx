@@ -1,18 +1,27 @@
 import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import {
 	useStepNavigation,
 	StepTransition,
 } from "../../hooks/useStepNavigation.jsx";
+import Seo from "../../components/Seo";
 import Choose from "./steps/Choose";
 import Delivery from "./steps/Delivery";
 import Confirm from "./steps/Confirm";
+import { clearStoredData } from "../../utils/localStorage";
 
 const STORAGE_KEY = "blankCardsFormData";
 const STEP_KEY = "blankCardsStepIndex";
 
 export default () => {
+	const location = useLocation();
 	const [cards, setCards] = useState([]);
 	const [loadingCards, setLoadingCards] = useState(true);
+
+	// Clear stored data immediately when navigating with state (from FullCollection)
+	if (location.state?.selectedCardId) {
+		clearStoredData(STORAGE_KEY, STEP_KEY);
+	}
 
 	useEffect(() => {
 		const fetchCards = async () => {
@@ -44,6 +53,21 @@ export default () => {
 		formData,
 		setFormData,
 	} = useStepNavigation(STORAGE_KEY, STEP_KEY);
+
+	// Pre-fill quantities from location state (from FullCollection page)
+	useEffect(() => {
+		if (
+			location.state?.selectedCardId &&
+			!formData.quantities?.[location.state.selectedCardId]
+		) {
+			setFormData({
+				...formData,
+				quantities: {
+					[location.state.selectedCardId]: 1,
+				},
+			});
+		}
+	}, [location.state?.selectedCardId]);
 
 	const steps = [
 		<Choose
@@ -77,8 +101,24 @@ export default () => {
 	];
 
 	return (
-		<StepTransition stepIndex={stepIndex} direction={direction}>
-			{steps[stepIndex]}
-		</StepTransition>
+		<>
+			<Seo
+				title="Shop Blank Greeting Cards"
+				description="Create your own designs with our high-quality blank cards. Choose up to four favorites and get them delivered to your door."
+				canonical="https://www.sadbaby.cards/blank-cards"
+				image="https://www.sadbaby.cards/og-image.png"
+				schemaMarkup={{
+					"@context": "https://schema.org",
+					"@type": "WebPage",
+					name: "Blank Cards",
+					url: "https://www.sadbaby.cards/blank-cards",
+					description:
+						"Shop high-quality blank cards for your custom designs",
+				}}
+			/>
+			<StepTransition stepIndex={stepIndex} direction={direction}>
+				{steps[stepIndex]}
+			</StepTransition>
+		</>
 	);
 };

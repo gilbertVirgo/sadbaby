@@ -1,5 +1,7 @@
 import React from "react";
 import { FadeInView } from "../components/FadeInView";
+import Seo from "../components/Seo";
+import FeatureScroll from "../components/FeatureScroll";
 
 export default () => {
 	let [accordionOpenIndex, setAccordionOpenIndex] = React.useState(0);
@@ -14,6 +16,20 @@ export default () => {
 
 	return (
 		<>
+			<Seo
+				title="Send Thoughtfully Designed Greeting Cards"
+				description="Discover unique greeting cards and send joy to loved ones. Browse our curated collection or shop blank cards to create your own designs."
+				canonical="https://www.sadbaby.cards/"
+				image="https://www.sadbaby.cards/og-image.png"
+				schemaMarkup={{
+					"@context": "https://schema.org",
+					"@type": "WebSite",
+					name: "sadbaby",
+					url: "https://www.sadbaby.cards/",
+					description:
+						"Greeting cards and stationery for every occasion",
+				}}
+			/>
 			<header className="wrapper video-hero__wrapper fg--light">
 				<video
 					className="video-hero__background"
@@ -21,7 +37,7 @@ export default () => {
 					playsInline
 					autoPlay
 					loop
-					src="https://denw90a2l8ovn.cloudfront.net/landing-video.mp4"
+					src="https://denw90a2l8ovn.cloudfront.net/video--compressed.mp4"
 				/>
 
 				<div className="video-hero__container container group-vt gap--xl hz--center">
@@ -71,6 +87,44 @@ export default () => {
 					</FadeInView>
 				</div>
 			</header>
+			<section className="wrapper">
+				<FadeInView
+					delay={0.32}
+					className="showcase__container container container--sm"
+				>
+					<div className="showcase-text__wrapper group-vt gap--lg">
+						<div className="group-vt gap--sm">
+							<span className="pill pill--accent">Featured</span>
+							<h2>Our Christmas Selection</h2>
+							<img
+								className="hide--md-up"
+								src="https://denw90a2l8ovn.cloudfront.net/christmas-feature.jpg"
+								alt="Our Christmas Selection"
+							/>
+							<p className="text-balance">
+								Six seasonal designs to help you send a
+								Christmas hello.
+							</p>
+						</div>
+						<a
+							href="/collection"
+							className="button button--sm fg--dark"
+						>
+							View all cards{" "}
+							<div className="icon icon--card icon--dark icon--md" />
+						</a>
+					</div>
+					<div
+						delay={0.16}
+						className="showcase-image__wrapper hide--md-down"
+					>
+						<img
+							src="https://denw90a2l8ovn.cloudfront.net/christmas-feature.jpg"
+							alt="Our Christmas Selection"
+						/>
+					</div>
+				</FadeInView>
+			</section>
 			<section className="wrapper">
 				<div className="container container--xl group-vt gap--xl hz--center">
 					<FadeInView
