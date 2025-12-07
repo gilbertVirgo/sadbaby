@@ -486,8 +486,11 @@ p.small {
 	height: sp(xxl);
 	position: relative;
 
-	&:hover .blank-cards-choose__selected-card-icon-wrapper .icon {
-		mask-image: url("/icons/minus.svg");
+	@include media(md) {
+		// Avoid on mobile
+		&:hover .blank-cards-choose__selected-card-icon-wrapper .icon {
+			mask-image: url("/icons/minus.svg");
+		}
 	}
 
 	img {

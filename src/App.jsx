@@ -1,4 +1,5 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { useEffect } from "react";
 import Home from "./pages/Home";
 import AboutUs from "./pages/AboutUs";
 import BlankCards from "./pages/BlankCards";
@@ -9,10 +10,32 @@ import Nav from "./static/Nav";
 import Terms from "./pages/Terms";
 import Privacy from "./pages/Privacy";
 import CheckoutSuccess from "./pages/CheckoutSuccess";
+import { clearStoredData } from "./utils/localStorage";
+
+function RouteChangeListener() {
+	const location = useLocation();
+
+	useEffect(() => {
+		const path = location.pathname;
+
+		// If we're not on send-a-card or checkout-success, clear send-a-card data
+		if (!path.includes("send-a-card") && !path.includes("checkout-success")) {
+			clearStoredData("sendACardFormData", "sendACardStepIndex");
+		}
+
+		// If we're not on blank-cards or checkout-success, clear blank-cards data
+		if (!path.includes("blank-cards") && !path.includes("checkout-success")) {
+			clearStoredData("blankCardsFormData", "blankCardsStepIndex");
+		}
+	}, [location.pathname]);
+
+	return null;
+}
 
 function App() {
 	return (
 		<BrowserRouter>
+			<RouteChangeListener />
 			<Nav />
 			<Routes>
 				<Route path="/" element={<Home />} />

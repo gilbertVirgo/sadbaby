@@ -120,7 +120,7 @@ export default ({
 			<div className="wrapper">
 				<div className="container container--xxl group-vt gap--xl hz--center">
 					<header className="step__header">
-						<h2>Choose four favourites</h2>
+						<h2>Shop blank cards</h2>
 						<div className="group-vt gap--xs">
 							<p>
 								Choose yourself any four designs from our

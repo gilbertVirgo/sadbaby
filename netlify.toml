@@ -4,6 +4,8 @@
   functions = "netlify/functions"
   publish = "dist"
 
+[functions]
+  node_bundler = "esbuild"
 
 [[redirects]]
   from = "/*"

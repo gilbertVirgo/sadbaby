@@ -284,13 +284,13 @@ $icons: (
 .button {
 	@each $name, $size in $spacings {
 		&--#{$name} {
-			column-gap: calc($size * 0.25);
+			column-gap: calc($size * 0.5);
 			padding: calc($size * 0.5) calc($size * 1.25);
 
-			@include media($max: "xs") {
-				column-gap: calc($size * 0.5);
-				padding: calc($size * 0.33) calc($size);
-			}
+			// @include media($max: "xs") {
+			// 	column-gap: calc($size * 0.5);
+			// 	padding: calc($size * 0.33) calc($size);
+			// }
 		}
 	}
 
@@ -358,6 +358,7 @@ $transitions: (
 
 	&:before {
 		content: "●";
+		color: color("dark-overlay");
 		padding-right: sp(xxxs);
 	}
 

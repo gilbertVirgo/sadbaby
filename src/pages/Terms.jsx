@@ -38,7 +38,7 @@ export default () => {
 							<li>
 								<strong>Individual cards</strong> — which we can
 								send directly to the intended recipient with a
-								handwritten message; or
+								printed message; or
 							</li>
 							<li>
 								<strong>Packs of cards</strong> — delivered to

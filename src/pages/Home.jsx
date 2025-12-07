@@ -45,11 +45,8 @@ export default () => {
 						delay={0}
 						className="group-vt gap--md hz--center"
 					>
-						<h1
-							className="talign--center"
-							style={{ letterSpacing: "-0.05rem" }}
-						>
-							Thoughtful cards,
+						<h1 className="talign--center">
+							{/* Thoughtful cards,
 							<br />
 							<em
 								style={{
@@ -58,7 +55,10 @@ export default () => {
 								}}
 							>
 								simply crafted
-							</em>
+							</em> */}
+							Paper beats
+							<br />
+							pixels. <em>Always.</em>
 						</h1>
 						<p className="talign--center text-balance max-width--xs">
 							Hand-printed linocut cards on 100% recycled paper.
@@ -131,16 +131,14 @@ export default () => {
 						delay={0.32}
 						className="group-vt gap--md hz--center"
 					>
-						<div className="group-vt gap--sm talign--center">
+						<div className="group-vt gap--sm talign--center max-width--xs text-balance">
 							<h2>
 								From you, <em>to them</em>
 							</h2>
 
 							<p>
 								Choose a design, add your message, and we’ll
-								print,
-								<br />
-								pack, and post your card directly to the
+								print, pack, and post your card directly to the
 								recipient.
 							</p>
 						</div>
@@ -205,7 +203,7 @@ export default () => {
 								src="https://denw90a2l8ovn.cloudfront.net/handwriting--christmas.jpg"
 								alt="Prefer handwriting?"
 							/>
-							<p>
+							<p className="text-balance">
 								Choose four blank lino-printed cards and we’ll
 								deliver them anywhere in the UK for free.
 							</p>

@@ -70,7 +70,7 @@ export default ({
 			setError={setError}
 			checkoutEndpoint="/.netlify/functions/createSendACardCheckout"
 			basePrice={4.95}
-			headerSubtitle="Review your card, message, and delivery details before we handwrite and post it."
+			headerSubtitle="Review your card, message, and delivery details before we print and post it."
 			additionalCheckoutData={{
 				message: data.message,
 				cardId: data.selectedCardId,

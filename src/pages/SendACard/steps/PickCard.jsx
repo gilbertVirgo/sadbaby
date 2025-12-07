@@ -24,11 +24,7 @@ export default ({
 	useEffect(() => {
 		if (selectedCardId && justSelectedRef.current) {
 			justSelectedRef.current = false;
-			const timer = setTimeout(() => {
-				onNext();
-			}, 330); // 0.33 seconds
-
-			return () => clearTimeout(timer);
+			onNext();
 		}
 	}, [selectedCardId, onNext]);
 
@@ -37,7 +33,7 @@ export default ({
 			<div className="wrapper">
 				<div className="container container--xxl group-vt gap--xl hz--center">
 					<header className="step__header">
-						<h2>Pick the perfect card</h2>
+						<h2>Send a card</h2>
 						<div className="group-vt gap--xs">
 							<p>£4.95 • Free UK delivery</p>
 							<p>

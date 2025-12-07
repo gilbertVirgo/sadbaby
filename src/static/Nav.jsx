@@ -3,6 +3,7 @@ import React from "react";
 let navLinks = [
 	{ title: "Send a card", url: "/send-a-card" },
 	{ title: "Blank cards", url: "/blank-cards" },
+	{ title: "View all cards", url: "/collection" },
 	{ title: "About us", url: "/about-us" },
 ];
 

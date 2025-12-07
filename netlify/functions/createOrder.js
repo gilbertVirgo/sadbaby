@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import { OrderModel } from "./models/Order.js";
+import { sendAdminEmail, sendCustomerEmail } from "./lib/email-helpers.js";
 
 let isConnected = false;
 
@@ -98,6 +99,15 @@ export const handler = async (event) => {
 		});
 
 		await order.save();
+
+		// Send emails to admin and customer
+		try {
+			await sendAdminEmail(order);
+			await sendCustomerEmail(order);
+		} catch (emailError) {
+			console.error("Email sending failed:", emailError);
+			// Don't fail the order creation if emails fail
+		}
 
 		return {
 			statusCode: 201,

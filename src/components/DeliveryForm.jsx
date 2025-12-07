@@ -1,10 +1,15 @@
 import { useState } from "react";
-import shippingInfo from "../data/shippingInfo";
+import { useShippingInfo } from "../hooks/useShippingInfo";
 import { validateField, validateDeliveryForm } from "../utils/formValidation";
 
 export default ({ data, setData, labels = {} }) => {
 	const [errors, setErrors] = useState({});
 	const [touched, setTouched] = useState({});
+	const {
+		shippingInfo,
+		loading: shippingLoading,
+		error: shippingError,
+	} = useShippingInfo();
 
 	const defaultLabels = {
 		name: "Recipient name",
@@ -158,36 +163,49 @@ export default ({ data, setData, labels = {} }) => {
 					Shipping <span className="required--asterisk" />
 				</h4>
 				<div className="group-vt gap--xxs">
-					{Object.entries(shippingInfo).map(
-						([shippingType, info]) => (
-							<div
-								key={shippingType}
-								className="group-hz gap--xs vt--center"
-							>
-								<input
-									type="radio"
-									name="shipping"
-									id={shippingType}
-									value={shippingType}
-									required
-									checked={data.shipping === shippingType}
-									onChange={(e) => {
-										updateField("shipping", e.target.value);
-										handleBlur("shipping");
-									}}
-								/>
-								<div className="group-vt gap--xxxs">
-									<label
-										htmlFor={shippingType}
-										style={{ fontWeight: "normal" }}
-									>
-										{info.title}
-									</label>
-									<p className="hint">{info.description}</p>
+					{shippingLoading ? (
+						<p className="hint">Loading shipping options...</p>
+					) : shippingError ? (
+						<p className="fg--primary hint">
+							Error loading shipping options
+						</p>
+					) : shippingInfo ? (
+						Object.entries(shippingInfo).map(
+							([shippingType, info]) => (
+								<div
+									key={shippingType}
+									className="group-hz gap--xs vt--center"
+								>
+									<input
+										type="radio"
+										name="shipping"
+										id={shippingType}
+										value={shippingType}
+										required
+										checked={data.shipping === shippingType}
+										onChange={(e) => {
+											updateField(
+												"shipping",
+												e.target.value
+											);
+											handleBlur("shipping");
+										}}
+									/>
+									<div className="group-vt gap--xxxs">
+										<label
+											htmlFor={shippingType}
+											style={{ fontWeight: "normal" }}
+										>
+											{info.title}
+										</label>
+										<p className="hint">
+											{info.description}
+										</p>
+									</div>
 								</div>
-							</div>
+							)
 						)
-					)}
+					) : null}
 				</div>
 			</section>
 			<section className="group-vt gap--xxs" id="email-section">
