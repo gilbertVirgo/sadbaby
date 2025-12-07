@@ -156,6 +156,11 @@ input {
 	}
 }
 
+input[type="radio"],
+input[type="checkbox"] {
+	flex-shrink: 0;
+}
+
 // Custom radio button
 input[type="radio"] {
 	appearance: none;
