@@ -4,15 +4,16 @@ export default () => {
 	return (
 		<>
 			<Seo
-				title="About Sad Baby"
-				description="Learn about Sad Baby, a small lino-printing studio in East London run by Gil and Lucy, crafting beautiful greeting cards from recycled paper."
+				title="About Sad Baby - Hand-Printed Lino Cards from East London"
+				description="Meet Sad Baby - a small lino-printing studio in East London. Discover how we create hand-printed greeting cards from recycled paper using sustainable practices."
 				canonical="https://www.sadbaby.cards/about-us"
 				image="https://denw90a2l8ovn.cloudfront.net/sadbaby-cards-seo.jpg"
 				schemaMarkup={{
 					"@context": "https://schema.org",
 					"@type": "LocalBusiness",
-					name: "Sad Baby",
-					description: "Hand-printed greeting cards from East London",
+					name: "Sad Baby - Hand-Printed Greeting Cards",
+					description:
+						"Hand-printed lino greeting cards studio in East London",
 					url: "https://www.sadbaby.cards/about-us",
 					image: "https://denw90a2l8ovn.cloudfront.net/sadbaby-cards-seo.jpg",
 				}}

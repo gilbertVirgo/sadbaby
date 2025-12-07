@@ -17,16 +17,17 @@ export default () => {
 	return (
 		<>
 			<Seo
-				title="Send Thoughtfully Designed Greeting Cards"
-				description="Discover unique greeting cards and send joy to loved ones. Browse our curated collection or shop blank cards to create your own designs."
+				title="Hand-Printed Greeting Cards Online | Sad Baby Cards"
+				description="Buy hand-printed lino greeting cards online from Sad Baby. Send personalized cards directly or shop blank cards. UK delivery from our East London studio."
 				canonical="https://www.sadbaby.cards/"
 				image="https://denw90a2l8ovn.cloudfront.net/sadbaby-cards-seo.jpg"
 				schemaMarkup={{
 					"@context": "https://schema.org",
 					"@type": "WebSite",
-					name: "sadbaby",
+					name: "Sad Baby - Hand-Printed Greeting Cards",
 					url: "https://www.sadbaby.cards/",
-					description: "Greeting cards for every occasion",
+					description:
+						"Hand-printed lino greeting cards made in East London",
 				}}
 			/>
 			<header className="wrapper video-hero__wrapper fg--light">

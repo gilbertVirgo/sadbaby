@@ -64,17 +64,17 @@ export default () => {
 	return (
 		<>
 			<Seo
-				title="Full Card Collection"
-				description="Discover every card in our growing collection — hand-printed, lovingly designed greeting cards. Find the perfect card for any occasion."
-				canonical="https://www.sadbaby.co.uk/collection"
+				title="Hand-Printed Greeting Cards Collection | Sad Baby"
+				description="Browse our complete collection of hand-printed lino greeting cards for birthdays, celebrations, and special occasions. Send directly or shop cards online."
+				canonical="https://www.sadbaby.cards/collection"
 				image="https://denw90a2l8ovn.cloudfront.net/sadbaby-cards-seo.jpg"
 				schemaMarkup={{
 					"@context": "https://schema.org",
 					"@type": "CollectionPage",
-					name: "Full Card Collection",
-					url: "https://www.sadbaby.co.uk/collection",
+					name: "Hand-Printed Greeting Cards Collection",
+					url: "https://www.sadbaby.cards/collection",
 					description:
-						"Hand-printed greeting cards for every occasion",
+						"Hand-printed lino greeting cards for every occasion",
 				}}
 			/>
 			<div className="wrapper">
