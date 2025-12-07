@@ -42,9 +42,9 @@ const orderSchema = new mongoose.Schema(
 				required: true,
 			},
 			shipping: {
-				type: String,
+				type: mongoose.Schema.Types.ObjectId,
+				ref: "Shipping",
 				required: true,
-				enum: ["standard", "firstClass"],
 			},
 		},
 

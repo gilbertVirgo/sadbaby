@@ -35,6 +35,7 @@ export const handler = async (event, context) => {
 		const shippingInfo = {};
 		shippingOptions.forEach((option) => {
 			shippingInfo[option.key] = {
+				_id: option._id.toString(),
 				title: option.title,
 				description: option.description,
 				cost: option.cost,

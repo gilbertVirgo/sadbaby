@@ -1,3 +1,5 @@
+import mongoose from "mongoose";
+import { ShippingModel } from "./models/Shipping.js";
 import {
 	createStripeInstance,
 	handleMethodCheck,
@@ -11,12 +13,26 @@ export const handler = async (event, context) => {
 	if (methodError) return methodError;
 
 	try {
+		// Connect to database if needed
+		if (mongoose.connection.readyState === 0) {
+			await mongoose.connect(process.env.MONGO_URI);
+		}
+
 		const stripe = createStripeInstance();
 		const data = JSON.parse(event.body);
 
+		// Fetch the shipping option to get its key
+		const shippingOption = await ShippingModel.findById(data.shipping);
+		if (!shippingOption) {
+			return {
+				statusCode: 400,
+				body: JSON.stringify({ error: "Invalid shipping option" }),
+			};
+		}
+
 		const lineItems = buildLineItems(
 			"price_1SYvoLJYOXC3lpM9oV8Dleij", // Blank cards product
-			data.shipping,
+			shippingOption.key,
 			"price_1SYvp0JYOXC3lpM9l6eIzCiv" // First class shipping
 		);
 

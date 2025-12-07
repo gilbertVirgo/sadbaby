@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import { OrderModel } from "./models/Order.js";
+import { ShippingModel } from "./models/Shipping.js";
 import { sendAdminEmail, sendCustomerEmail } from "./lib/email-helpers.js";
 
 let isConnected = false;
@@ -68,6 +69,25 @@ export const handler = async (event) => {
 			};
 		}
 
+		// Validate and fetch shipping option
+		if (!orderData.delivery?.shipping) {
+			return {
+				statusCode: 400,
+				body: JSON.stringify({ error: "Missing shipping option" }),
+			};
+		}
+
+		const shippingOption = await ShippingModel.findById(
+			orderData.delivery.shipping
+		);
+
+		if (!shippingOption) {
+			return {
+				statusCode: 400,
+				body: JSON.stringify({ error: "Invalid shipping option" }),
+			};
+		}
+
 		// Create new order
 		const order = new OrderModel({
 			orderType: orderData.orderType,
@@ -79,7 +99,7 @@ export const handler = async (event) => {
 				address2: orderData.delivery.address2,
 				city: orderData.delivery.city,
 				postcode: orderData.delivery.postcode,
-				shipping: orderData.delivery.shipping,
+				shipping: shippingOption._id,
 			},
 			sendACard:
 				orderData.orderType === "send-a-card"
