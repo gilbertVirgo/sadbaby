@@ -170,41 +170,57 @@ export default ({ data, setData, labels = {} }) => {
 							Error loading shipping options
 						</p>
 					) : shippingInfo ? (
-						Object.entries(shippingInfo).map(
-							([shippingType, info]) => (
-								<div
-									key={shippingType}
-									className="group-hz gap--xs vt--center"
-								>
-									<input
-										type="radio"
-										name="shipping"
-										id={shippingType}
-										value={shippingType}
-										required
-										checked={data.shipping === shippingType}
-										onChange={(e) => {
-											updateField(
-												"shipping",
-												e.target.value
-											);
-											handleBlur("shipping");
-										}}
-									/>
-									<div className="group-vt gap--xxxs">
-										<label
-											htmlFor={shippingType}
-											style={{ fontWeight: "normal" }}
+						<>
+							<div className="group-vt gap--xxs">
+								{Object.entries(shippingInfo).map(
+									([shippingType, info]) => (
+										<div
+											key={shippingType}
+											className="group-hz gap--xs vt--center"
 										>
-											{info.title}
-										</label>
-										<p className="hint">
-											{info.description}
-										</p>
-									</div>
-								</div>
-							)
-						)
+											<input
+												type="radio"
+												name="shipping"
+												id={shippingType}
+												value={info._id}
+												required
+												checked={
+													data.shipping === info._id
+												}
+												onChange={(e) => {
+													updateField(
+														"shipping",
+														e.target.value
+													);
+													handleBlur("shipping");
+												}}
+												onBlur={() =>
+													handleBlur("shipping")
+												}
+											/>
+											<div className="group-vt gap--xxxs">
+												<label
+													htmlFor={shippingType}
+													style={{
+														fontWeight: "normal",
+													}}
+												>
+													{info.title}
+												</label>
+												<p className="hint">
+													{info.description}
+												</p>
+											</div>
+										</div>
+									)
+								)}
+							</div>
+							{touched.shipping && errors.shipping && (
+								<p className="fg--primary hint">
+									{errors.shipping}
+								</p>
+							)}
+						</>
 					) : null}
 				</div>
 			</section>

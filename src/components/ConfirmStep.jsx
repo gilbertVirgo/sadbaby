@@ -1,5 +1,5 @@
 import { useState } from "react";
-import shippingInfo from "../data/shippingInfo";
+import { useShippingInfo } from "../hooks/useShippingInfo";
 import StepNavWrapper from "../pages/BlankCards/StepNavWrapper";
 
 export default ({
@@ -13,6 +13,7 @@ export default ({
 }) => {
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState(null);
+	const { shippingInfo } = useShippingInfo();
 
 	const handleCheckout = async () => {
 		setLoading(true);
@@ -85,9 +86,14 @@ export default ({
 								title: "Shipping",
 								editStepIndex: sections.length,
 								stepSection: "shipping-section",
-								content: (
-									<p>{shippingInfo[data.shipping].title}</p>
-								),
+								content: (() => {
+									const shipping = Object.values(
+										shippingInfo || {}
+									).find((s) => s._id === data.shipping);
+									return (
+										<p>{shipping?.title || "Loading..."}</p>
+									);
+								})(),
 							},
 							{
 								title: "Your email",
@@ -97,15 +103,20 @@ export default ({
 							},
 							{
 								title: "Amount due",
-								content: (
-									<p>
-										£
-										{(
-											basePrice +
-											shippingInfo[data.shipping].cost
-										).toFixed(2)}
-									</p>
-								),
+								content: (() => {
+									const shipping = Object.values(
+										shippingInfo || {}
+									).find((s) => s._id === data.shipping);
+									const shippingCost = shipping?.cost || 0;
+									return (
+										<p>
+											£
+											{(basePrice + shippingCost).toFixed(
+												2
+											)}
+										</p>
+									);
+								})(),
 							},
 						].map((section, index) => (
 							<section key={index} className="group-hz separator">
