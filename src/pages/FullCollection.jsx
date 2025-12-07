@@ -67,7 +67,7 @@ export default () => {
 				title="Full Card Collection"
 				description="Discover every card in our growing collection — hand-printed, lovingly designed greeting cards. Find the perfect card for any occasion."
 				canonical="https://www.sadbaby.co.uk/collection"
-				image="https://www.sadbaby.co.uk/og-image.png"
+				image="https://denw90a2l8ovn.cloudfront.net/sadbaby-cards-seo.jpg"
 				schemaMarkup={{
 					"@context": "https://schema.org",
 					"@type": "CollectionPage",

@@ -20,14 +20,13 @@ export default () => {
 				title="Send Thoughtfully Designed Greeting Cards"
 				description="Discover unique greeting cards and send joy to loved ones. Browse our curated collection or shop blank cards to create your own designs."
 				canonical="https://www.sadbaby.cards/"
-				image="https://www.sadbaby.cards/og-image.png"
+				image="https://denw90a2l8ovn.cloudfront.net/sadbaby-cards-seo.jpg"
 				schemaMarkup={{
 					"@context": "https://schema.org",
 					"@type": "WebSite",
 					name: "sadbaby",
 					url: "https://www.sadbaby.cards/",
-					description:
-						"Greeting cards and stationery for every occasion",
+					description: "Greeting cards for every occasion",
 				}}
 			/>
 			<header className="wrapper video-hero__wrapper fg--light">

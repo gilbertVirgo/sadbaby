@@ -106,7 +106,7 @@ export default () => {
 				title="Shop Blank Greeting Cards"
 				description="Create your own designs with our high-quality blank cards. Choose up to four favorites and get them delivered to your door."
 				canonical="https://www.sadbaby.cards/blank-cards"
-				image="https://www.sadbaby.cards/og-image.png"
+				image="https://denw90a2l8ovn.cloudfront.net/sadbaby-cards-seo.jpg"
 				schemaMarkup={{
 					"@context": "https://schema.org",
 					"@type": "WebPage",

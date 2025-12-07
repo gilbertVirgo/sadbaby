@@ -110,7 +110,7 @@ export default () => {
 				title="Send a Custom Greeting Card"
 				description="Pick a beautiful card, write your message, add delivery details, and send joy to someone special."
 				canonical="https://www.sadbaby.cards/send-a-card"
-				image="https://www.sadbaby.cards/og-image.png"
+				image="https://denw90a2l8ovn.cloudfront.net/sadbaby-cards-seo.jpg"
 				schemaMarkup={{
 					"@context": "https://schema.org",
 					"@type": "WebPage",
