@@ -19,12 +19,18 @@ function RouteChangeListener() {
 		const path = location.pathname;
 
 		// If we're not on send-a-card or checkout-success, clear send-a-card data
-		if (!path.includes("send-a-card") && !path.includes("checkout-success")) {
+		if (
+			!path.includes("send-a-card") &&
+			!path.includes("checkout-success")
+		) {
 			clearStoredData("sendACardFormData", "sendACardStepIndex");
 		}
 
 		// If we're not on blank-cards or checkout-success, clear blank-cards data
-		if (!path.includes("blank-cards") && !path.includes("checkout-success")) {
+		if (
+			!path.includes("blank-cards") &&
+			!path.includes("checkout-success")
+		) {
 			clearStoredData("blankCardsFormData", "blankCardsStepIndex");
 		}
 	}, [location.pathname]);
