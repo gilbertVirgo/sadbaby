@@ -47,7 +47,7 @@ export const getOrderConfirmationHTML = (orderData) => {
 			orderData.orderType === "send-a-card"
 				? "Send a Card"
 				: "Blank Cards",
-		shippingMethod: orderData.delivery.shipping,
+		shippingMethod: orderData.delivery.shipping.title,
 		recipientName: orderData.delivery.name,
 		address1: orderData.delivery.address1,
 		address2: orderData.delivery.address2,
@@ -92,20 +92,4 @@ export const getOrderReceivedAdminHTML = (orderData) => {
 	};
 
 	return renderTemplate("order-received-admin", templateData);
-};
-
-export const getDispatchConfirmationHTML = (orderData, trackingInfo = {}) => {
-	const templateData = {
-		orderId: orderData._id,
-		orderType:
-			orderData.orderType === "send-a-card"
-				? "Send a Card"
-				: "Blank Cards",
-		recipientName: orderData.delivery.name,
-		trackingNumber: trackingInfo.trackingNumber || "",
-		trackingUrl: trackingInfo.trackingUrl || "",
-		estimatedDelivery: trackingInfo.estimatedDelivery || "",
-	};
-
-	return renderTemplate("dispatch-confirmation", templateData);
 };

@@ -11,9 +11,9 @@
 		<mj-style>
 			@import url('https://use.typekit.net/fsk6air.css'); body {
 			font-family: 'brandon-grotesque', sans-serif; } h1, h2, h3, h4, h5,
-			h6 { font-family: 'ivymode-variable', serif; } a { color: #ff5e5b; }
-			button { font-family: 'brandon-grotesque', sans-serif; font-size:
-			18px; }
+			h6 { font-family: 'ivymode-variable', serif; font-weight: normal;} a
+			{ color: #ff5e5b; } button { font-family: 'brandon-grotesque',
+			sans-serif; font-size: 18px; }
 		</mj-style>
 	</mj-head>
 	<mj-body background-color="#ffffea">
@@ -31,7 +31,6 @@
 			<mj-column>
 				<mj-text
 					font-size="36px"
-					font-weight="bold"
 					color="#0d0d0d"
 					align="center"
 					font-family="ivymode-variable, serif"
@@ -56,7 +55,6 @@
 			<mj-column>
 				<mj-text
 					font-size="22px"
-					font-weight="bold"
 					color="#0d0d0d"
 					font-family="ivymode-variable, serif"
 				>
@@ -111,7 +109,6 @@
 			<mj-column>
 				<mj-text
 					font-size="22px"
-					font-weight="bold"
 					color="#0d0d0d"
 					font-family="ivymode-variable, serif"
 				>

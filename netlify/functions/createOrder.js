@@ -120,6 +120,9 @@ export const handler = async (event) => {
 
 		await order.save();
 
+		// Populate shipping details for email templates
+		await order.populate("delivery.shipping");
+
 		// Send emails to admin and customer
 		try {
 			await sendAdminEmail(order);
