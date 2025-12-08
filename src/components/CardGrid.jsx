@@ -74,6 +74,7 @@ export default ({
 												: ""
 										}`}
 										onClick={() => onCardSelect(card)}
+										onTouchStart={() => onCardSelect(card)}
 									>
 										{selectedCards === card._id && (
 											<span className="blank-cards-chooose__quantity-indicator contains-non-zero-value">
@@ -94,6 +95,9 @@ export default ({
 												: ""
 										}`}
 										onClick={(e) =>
+											onCardSelect(card, index, e)
+										}
+										onTouchStart={(e) =>
 											onCardSelect(card, index, e)
 										}
 									>
