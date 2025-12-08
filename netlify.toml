@@ -1,11 +1,13 @@
 # example netlify.toml
 [build]
-  command = "npm run build"
+  command = "npm run build && npm run mjml"
   functions = "netlify/functions"
   publish = "dist"
 
 [functions]
   node_bundler = "esbuild"
+  # Include compiled email templates in the deployment
+  included_files = ["netlify/functions/lib/templates/compiled/**"]
 
 [[redirects]]
   from = "/*"
