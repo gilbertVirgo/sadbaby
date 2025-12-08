@@ -1,7 +1,7 @@
 export default ({ title, description, canonical, image, schemaMarkup }) => {
 	// Update document title
 	if (title) {
-		document.title = `${title} | sadbaby`;
+		document.title = title;
 	}
 
 	// Update meta description

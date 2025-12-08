@@ -72,7 +72,7 @@ async function testEmails() {
 	console.log(
 		`   BREVO_FROM_EMAIL: ${
 			process.env.BREVO_FROM_EMAIL ||
-			"Using default (noreply@sadbaby.co.uk)"
+			"Using default (noreply@sadbaby.cards)"
 		}`
 	);
 	console.log("");

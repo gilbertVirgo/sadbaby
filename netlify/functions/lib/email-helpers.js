@@ -9,7 +9,7 @@ const sendAdminEmail = async (order) => {
 
 	const emailData = {
 		sender: {
-			email: process.env.BREVO_FROM_EMAIL || "noreply@sadbaby.co.uk",
+			email: process.env.BREVO_FROM_EMAIL || "noreply@sadbaby.cards",
 			name: "Sad Baby Cards",
 		},
 		to: [{ email: "sadbaby.cards@icloud.com" }],
@@ -51,7 +51,7 @@ const sendCustomerEmail = async (order) => {
 
 	const emailData = {
 		sender: {
-			email: process.env.BREVO_FROM_EMAIL || "noreply@sadbaby.co.uk",
+			email: process.env.BREVO_FROM_EMAIL || "noreply@sadbaby.cards",
 			name: "Sad Baby Cards",
 		},
 		to: [{ email: order.email }],
