@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 let navLinks = [
 	{ title: "Send a card", url: "/send-a-card" },
@@ -13,12 +14,12 @@ export default () => {
 	return (
 		<nav className="nav__wrapper wrapper">
 			<div className="nav__container container">
-				<a className="nav__logo" href="/">
+				<Link className="nav__logo" to="/">
 					<img
 						src="/logo-with-text.svg"
 						alt="Christian Heritage London"
 					/>
-				</a>
+				</Link>
 				<button
 					className={`icon icon--xl ${
 						isMenuOpen ? "icon--close-menu" : "icon--open-menu"
@@ -28,7 +29,12 @@ export default () => {
 				<ul className="nav-links__wrapper group-hz gap--md hide--lg-down">
 					{navLinks.map((link, index) => (
 						<li key={index}>
-							<a href={link.url}>{link.title}</a>
+							<Link
+								to={link.url}
+								onClick={() => setIsMenuOpen(false)}
+							>
+								{link.title}
+							</Link>
 						</li>
 					))}
 				</ul>
@@ -42,7 +48,12 @@ export default () => {
 					<ul className="nav-links__wrapper">
 						{navLinks.map((link, index) => (
 							<li key={index}>
-								<a href={link.url}>{link.title}</a>
+								<Link
+									to={link.url}
+									onClick={() => setIsMenuOpen(false)}
+								>
+									{link.title}
+								</Link>
 							</li>
 						))}
 					</ul>
