@@ -6,12 +6,12 @@ export default () => {
 			<Seo
 				title="Terms & Conditions"
 				description="Read the Terms & Conditions for purchasing greeting cards from Sad Baby. Learn about our policies and responsibilities."
-				canonical="https://www.sadbaby.cards/terms"
+				canonical="https://sadbaby.cards/terms"
 				schemaMarkup={{
 					"@context": "https://schema.org",
 					"@type": "WebPage",
 					name: "Terms & Conditions",
-					url: "https://www.sadbaby.cards/terms",
+					url: "https://sadbaby.cards/terms",
 				}}
 			/>
 			<div className="wrapper">

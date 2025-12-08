@@ -7,7 +7,7 @@ export default () => {
 			<Seo
 				title="Page Not Found | Sad Baby Cards"
 				description="Sorry, the page you're looking for doesn't exist. Browse our hand-printed greeting cards collection or shop blank cards instead."
-				canonical="https://www.sadbaby.cards/404"
+				canonical="https://sadbaby.cards/404"
 			/>
 			<div className="wrapper fg--dark">
 				<div className="container container--xxl hz--center">

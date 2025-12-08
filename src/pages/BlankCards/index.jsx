@@ -105,13 +105,13 @@ export default () => {
 			<Seo
 				title="Buy Blank Hand-Printed Greeting Cards | Sad Baby"
 				description="Shop hand-printed blank lino cards perfect for your own designs. Choose from our collection and get them delivered anywhere in the UK."
-				canonical="https://www.sadbaby.cards/blank-cards"
+				canonical="https://sadbaby.cards/blank-cards"
 				image="https://denw90a2l8ovn.cloudfront.net/sadbaby-cards-seo.jpg"
 				schemaMarkup={{
 					"@context": "https://schema.org",
 					"@type": "WebPage",
 					name: "Shop Blank Hand-Printed Cards",
-					url: "https://www.sadbaby.cards/blank-cards",
+					url: "https://sadbaby.cards/blank-cards",
 					description:
 						"Hand-printed blank greeting cards for your custom designs",
 				}}
