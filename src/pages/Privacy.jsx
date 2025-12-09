@@ -5,7 +5,7 @@ export default () => {
 		<>
 			<Seo
 				title="Privacy Policy"
-				description="Learn how Sad Baby collects, uses, and protects your personal information. GDPR compliant data privacy practices."
+				description="Learn how Baby Sad collects, uses, and protects your personal information. GDPR compliant data privacy practices."
 				canonical="https://sadbaby.cards/privacy"
 				schemaMarkup={{
 					"@context": "https://schema.org",

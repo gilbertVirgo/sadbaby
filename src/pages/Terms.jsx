@@ -5,7 +5,7 @@ export default () => {
 		<>
 			<Seo
 				title="Terms & Conditions"
-				description="Read the Terms & Conditions for purchasing greeting cards from Sad Baby. Learn about our policies and responsibilities."
+				description="Read the Terms & Conditions for purchasing greeting cards from Baby Sad. Learn about our policies and responsibilities."
 				canonical="https://sadbaby.cards/terms"
 				schemaMarkup={{
 					"@context": "https://schema.org",

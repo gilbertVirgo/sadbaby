@@ -103,7 +103,7 @@ export default () => {
 	return (
 		<>
 			<Seo
-				title="Buy Blank Hand-Printed Greeting Cards | Sad Baby"
+				title="Buy Blank Hand-Printed Greeting Cards | Baby Sad"
 				description="Shop hand-printed blank lino cards perfect for your own designs. Choose from our collection and get them delivered anywhere in the UK."
 				canonical="https://sadbaby.cards/blank-cards"
 				image="https://denw90a2l8ovn.cloudfront.net/sadbaby-cards-seo.jpg"

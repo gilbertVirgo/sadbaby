@@ -101,7 +101,7 @@ function App() {
 				<div className="footer__container container container--lg group-vt gap--lg hz--center talign--center">
 					<div className="group-vt gap--xs">
 						<p>
-							© Sad Baby 2025 — Hand-printed cards by Gil & Lucy
+							© Baby Sad 2025 — Hand-printed cards by Gil & Lucy
 							in East London.
 						</p>
 						<p>

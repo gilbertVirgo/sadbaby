@@ -5,7 +5,7 @@ export default () => {
 	return (
 		<>
 			<Seo
-				title="Page Not Found | Sad Baby Cards"
+				title="Page Not Found | Baby Sad Cards"
 				description="Sorry, the page you're looking for doesn't exist. Browse our hand-printed greeting cards collection or shop blank cards instead."
 				canonical="https://sadbaby.cards/404"
 			/>

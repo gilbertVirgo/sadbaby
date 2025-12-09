@@ -17,14 +17,14 @@ export default () => {
 	return (
 		<>
 			<Seo
-				title="Hand-Printed Greeting Cards Online | Sad Baby Cards"
-				description="Buy hand-printed lino greeting cards online from Sad Baby. Send personalized cards directly or shop blank cards. UK delivery from our East London studio."
+				title="Hand-Printed Greeting Cards Online | Baby Sad Cards"
+				description="Buy hand-printed lino greeting cards online from Baby Sad. Send personalized cards directly or shop blank cards. UK delivery from our East London studio."
 				canonical="https://sadbaby.cards/"
 				image="https://denw90a2l8ovn.cloudfront.net/sadbaby-cards-seo.jpg"
 				schemaMarkup={{
 					"@context": "https://schema.org",
 					"@type": "WebSite",
-					name: "Sad Baby - Hand-Printed Greeting Cards",
+					name: "Baby Sad - Hand-Printed Greeting Cards",
 					url: "https://sadbaby.cards/",
 					description:
 						"Hand-printed lino greeting cards made in East London",
@@ -229,7 +229,7 @@ export default () => {
 						{[
 							{
 								title: "Are your cards really hand printed?",
-								body: "Yes — every Sad Baby card is carved and pressed by hand in our small East London studio. We use traditional lino printing methods and print in small batches.",
+								body: "Yes — every Baby Sad card is carved and pressed by hand in our small East London studio. We use traditional lino printing methods and print in small batches.",
 							},
 							{
 								title: "What kind of paper do you use?",

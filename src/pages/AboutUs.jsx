@@ -4,14 +4,14 @@ export default () => {
 	return (
 		<>
 			<Seo
-				title="About Sad Baby - Hand-Printed Lino Cards from East London"
-				description="Meet Sad Baby - a small lino-printing studio in East London. Discover how we create hand-printed greeting cards from recycled paper using sustainable practices."
+				title="About Baby Sad - Hand-Printed Lino Cards from East London"
+				description="Meet Baby Sad - a small lino-printing studio in East London. Discover how we create hand-printed greeting cards from recycled paper using sustainable practices."
 				canonical="https://sadbaby.cards/about-us"
 				image="https://denw90a2l8ovn.cloudfront.net/sadbaby-cards-seo.jpg"
 				schemaMarkup={{
 					"@context": "https://schema.org",
 					"@type": "LocalBusiness",
-					name: "Sad Baby - Hand-Printed Greeting Cards",
+					name: "Baby Sad - Hand-Printed Greeting Cards",
 					description:
 						"Hand-printed lino greeting cards studio in East London",
 					url: "https://sadbaby.cards/about-us",
@@ -26,13 +26,13 @@ export default () => {
 							src={
 								"https://denw90a2l8ovn.cloudfront.net/family.jpg"
 							}
-							alt="About Sad Baby - Studio photo"
+							alt="About Baby Sad - Studio photo"
 						/>
 					</div>
 					<div className="about-us__content group-vt gap--sm">
-						<h1>About Sad Baby</h1>
+						<h1>About Baby Sad</h1>
 						<p className="hide--md-up">
-							Sad Baby is a small card-printing studio run by Gil
+							Baby Sad is a small card-printing studio run by Gil
 							and Lucy in East London. We make lino-printed
 							greeting cards in small batches, using recycled
 							paper and simple, carefully carved&nbsp;designs.
@@ -42,18 +42,18 @@ export default () => {
 							src={
 								"https://denw90a2l8ovn.cloudfront.net/family.jpg"
 							}
-							alt="About Sad Baby - Studio photo"
+							alt="About Baby Sad - Studio photo"
 						/>
 						<div className="group-vt gap--xs">
 							<p className="hide--md-down">
-								Sad Baby is a small card-printing studio run by
+								Baby Sad is a small card-printing studio run by
 								Gil and Lucy in East London. We make
 								lino-printed greeting cards in small batches,
 								using recycled paper and simple, carefully
 								carved&nbsp;designs.
 							</p>
 							<p>
-								We started Sad Baby because sending something
+								We started Baby Sad because sending something
 								through the post still feels special. In a world
 								of quick, throwaway messages, a physical card
 								slows things down in the best&nbsp;way.
@@ -62,13 +62,13 @@ export default () => {
 								The name comes from our older daughter, who
 								loves to comfort her dolls — always running over
 								to tell us, “baby sad!” and, most amusingly,
-								insists that we draw a &ldquo;sad baby&rdquo;
+								insists that we draw a &ldquo;Baby Sad&rdquo;
 								whenever pen and paper present themselves. We
 								consider it our family&apos;s first truly
 								original&nbsp;innovation!
 							</p>
 							<p>
-								Each Sad Baby card is carved and printed by
+								Each Baby Sad card is carved and printed by
 								hand, made to keep, and sent from our home
 								studio in East&nbsp;London.
 							</p>

@@ -63,7 +63,7 @@ export default () => {
 	return (
 		<>
 			<Seo
-				title="Hand-Printed Greeting Cards Collection | Sad Baby"
+				title="Hand-Printed Greeting Cards Collection | Baby Sad"
 				description="Browse our complete collection of hand-printed lino greeting cards for birthdays, celebrations, and special occasions. Send directly or shop cards online."
 				canonical="https://sadbaby.cards/collection"
 				image="https://denw90a2l8ovn.cloudfront.net/sadbaby-cards-seo.jpg"

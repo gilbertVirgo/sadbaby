@@ -22,7 +22,7 @@
 				<mj-image
 					width="200px"
 					src="https://denw90a2l8ovn.cloudfront.net/sadbaby-frown-upside-down.gif"
-					alt="Sad Baby Cards"
+					alt="Baby Sad Cards"
 				/>
 			</mj-column>
 		</mj-section>
@@ -196,7 +196,7 @@
 					align="center"
 					font-family="brandon-grotesque, sans-serif"
 				>
-					© 2025 Sad Baby Cards. All rights reserved.
+					© 2025 Baby Sad Cards. All rights reserved.
 				</mj-text>
 			</mj-column>
 		</mj-section>
