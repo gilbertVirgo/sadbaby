@@ -39,7 +39,9 @@ export const handler = async (event, context) => {
 		const stripe = createStripeInstance();
 
 		// Fetch the shipping option to get its key
-		const shippingOption = await ShippingModel.findById(checkoutData.shipping);
+		const shippingOption = await ShippingModel.findById(
+			checkoutData.shipping
+		);
 		if (!shippingOption) {
 			return {
 				statusCode: 400,
