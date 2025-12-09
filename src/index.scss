@@ -1,6 +1,11 @@
 @use "./util.scss" as *;
 @use "./reset.scss";
 
+/* Hide reCAPTCHA badge (as per Google recommendations, display privacy notice) */
+.grecaptcha-badge {
+	visibility: hidden;
+}
+
 p.small {
 	font-size: calc((sp(sm) + sp(xs)) / 2);
 }

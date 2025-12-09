@@ -14,8 +14,6 @@ export default ({
 	const [error, setError] = useState(null);
 	const selectedCard = cards.find((c) => c._id === data.selectedCardId);
 
-	console.log({ data });
-
 	const sections = [
 		{
 			title: "Your card",

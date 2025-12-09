@@ -29,13 +29,9 @@ const saveOrderToDatabase = async (sessionId) => {
 		}
 
 		const sessionData = await sessionResponse.json();
-		console.log("Session data from Stripe:", sessionData);
 
 		const orderType = sessionData.metadata.orderType;
 		const formData = JSON.parse(sessionData.metadata.orderData);
-
-		console.log("Order type:", orderType);
-		console.log("Form data:", formData);
 
 		let orderData;
 
@@ -82,8 +78,6 @@ const saveOrderToDatabase = async (sessionId) => {
 			return;
 		}
 
-		console.log("Sending order data to backend:", orderData);
-
 		// Send order to backend
 		const response = await fetch("/.netlify/functions/createOrder", {
 			method: "POST",
@@ -98,7 +92,6 @@ const saveOrderToDatabase = async (sessionId) => {
 		}
 
 		const result = await response.json();
-		console.log("Order saved successfully:", result.orderId);
 	} catch (error) {
 		console.error("Error saving order to database:", error);
 		// Don't block the user - they've already paid

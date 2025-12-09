@@ -6,6 +6,7 @@ export default defineConfig({
 	plugins: [react()],
 	server: {
 		hmr: true,
+		allowedHosts: ["6d700f5b2f21.ngrok-free.app"],
 		watch: {
 			usePolling: true,
 		},

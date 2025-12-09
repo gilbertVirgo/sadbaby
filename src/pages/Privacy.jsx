@@ -284,12 +284,32 @@ export default () => {
 							order and will not use them for any other purpose,
 							including marketing.
 						</p>
-						<h2>11. Changes to This Policy</h2>
+						<h2>11. reCAPTCHA</h2>
+						<p>
+							This site is protected by reCAPTCHA and the Google{" "}
+							<a
+								href="https://policies.google.com/privacy"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								Privacy Policy
+							</a>{" "}
+							and{" "}
+							<a
+								href="https://policies.google.com/terms"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								Terms of Service
+							</a>{" "}
+							apply.
+						</p>
+						<h2>12. Changes to This Policy</h2>
 						<p>
 							We may update this Privacy Policy occasionally. The
 							most recent version will always appear on this page.
 						</p>
-						<h2>12. Contact Us</h2>
+						<h2>13. Contact Us</h2>
 						<p>
 							If you have any questions or concerns, please
 							contact us at:{" "}

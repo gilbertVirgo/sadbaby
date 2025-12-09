@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useShippingInfo } from "../hooks/useShippingInfo";
+import { useRecaptcha } from "../hooks/useRecaptcha";
 import StepNavWrapper from "../pages/BlankCards/StepNavWrapper";
 
 export default ({
@@ -14,22 +15,41 @@ export default ({
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState(null);
 	const { shippingInfo } = useShippingInfo();
+	const { executeRecaptcha } = useRecaptcha();
 
 	const handleCheckout = async () => {
 		setLoading(true);
 		setError(null);
 
 		try {
+			// Get reCAPTCHA token
+			const recaptchaToken = await executeRecaptcha("checkout");
+
+			if (!recaptchaToken) {
+				setError(
+					"Security verification failed. Please refresh and try again."
+				);
+				setLoading(false);
+				return;
+			}
+
+			// Send checkout request with reCAPTCHA token
 			const response = await fetch(checkoutEndpoint, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
 				},
-				body: JSON.stringify(data),
+				body: JSON.stringify({
+					...data,
+					recaptchaToken,
+				}),
 			});
 
 			if (!response.ok) {
-				throw new Error("Failed to create checkout session");
+				const errorData = await response.json();
+				throw new Error(
+					errorData.error || "Failed to create checkout session"
+				);
 			}
 
 			const { url } = await response.json();

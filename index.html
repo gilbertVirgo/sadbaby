@@ -110,12 +110,10 @@
 						e.preventDefault(); // Prevent default hover behavior
 						var _mousemoves = +(target.dataset._mousemove_ || "0");
 						_mousemoves = _mousemoves + 1;
-						console.log("mousemoves: " + _mousemoves);
 						target.dataset._mousemove_ = _mousemoves;
 						// Trigger click event after enough movement
 						if (_mousemoves > 1 && !target.dataset._timeOutId_) {
 							var id = setTimeout(function () {
-								console.log("double mousemove click fired");
 								target.click(); // Simulate a click after mouse move
 							}, 80); // Adjust delay to fine-tune the click event timing
 							target.dataset._timeOutId_ = id;
@@ -127,14 +125,12 @@
 							// This check prevents interference with valid tracking
 							// and programmatic click events.
 							if (e.isTrusted) {
-								console.log("prevented doubleclick");
 								e.preventDefault();
 							}
 							return;
 						}
 						// Prevent timeout click
 						if (target.dataset._timeOutId_) {
-							console.log("cleared timeout");
 							clearTimeout(+target.dataset._timeOutId_);
 						}
 						// Mark element as clicked
@@ -155,7 +151,7 @@
 						return;
 					if (!shouldPrevent(target)) return;
 					var type = e.type;
-					console.log(type, target);
+
 					eventSelector[type] && eventSelector[type](e, target);
 				}
 				// Add event listeners for touch and mouse events

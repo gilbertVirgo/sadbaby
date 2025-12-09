@@ -12,6 +12,48 @@ import Privacy from "./pages/Privacy";
 import CheckoutSuccess from "./pages/CheckoutSuccess";
 import { clearStoredData } from "./utils/localStorage";
 
+function RecaptchaLoader() {
+	useEffect(() => {
+		const siteKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
+
+		if (!siteKey) {
+			console.warn(
+				"reCAPTCHA site key not found in environment variables"
+			);
+			return;
+		}
+
+		// Check if script is already loaded
+		if (window.grecaptcha) {
+			console.log("reCAPTCHA already loaded");
+			return;
+		}
+
+		// Check if script tag already exists
+		if (document.querySelector('script[src*="recaptcha/api.js"]')) {
+			return;
+		}
+
+		// Load reCAPTCHA script
+		const script = document.createElement("script");
+		script.src = `https://www.google.com/recaptcha/api.js?render=${siteKey}`;
+		script.async = true;
+		script.defer = true;
+
+		script.onload = () => {
+			console.log("reCAPTCHA script loaded successfully");
+		};
+
+		script.onerror = () => {
+			console.error("Failed to load reCAPTCHA script");
+		};
+
+		document.head.appendChild(script);
+	}, []);
+
+	return null;
+}
+
 function RouteChangeListener() {
 	const location = useLocation();
 
@@ -41,6 +83,7 @@ function RouteChangeListener() {
 function App() {
 	return (
 		<BrowserRouter>
+			<RecaptchaLoader />
 			<RouteChangeListener />
 			<Nav />
 			<Routes>

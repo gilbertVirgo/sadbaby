@@ -20,7 +20,6 @@ export default () => {
 				}
 				const data = await response.json();
 				setCards(data);
-				console.log(`Successfully fetched ${data.length} cards`);
 			} catch (error) {
 				console.error("Error fetching cards:", error);
 				setCards([]);

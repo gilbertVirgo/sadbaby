@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import { ShippingModel } from "./models/Shipping.js";
+import { verifyRecaptcha } from "./lib/recaptcha.js";
 import {
 	createStripeInstance,
 	handleMethodCheck,
@@ -13,16 +14,32 @@ export const handler = async (event, context) => {
 	if (methodError) return methodError;
 
 	try {
+		const data = JSON.parse(event.body);
+		const { recaptchaToken, ...checkoutData } = data;
+
+		// Verify reCAPTCHA token if provided
+		if (recaptchaToken) {
+			const recaptchaResult = await verifyRecaptcha(recaptchaToken, 0.5);
+			if (!recaptchaResult.success) {
+				return {
+					statusCode: 400,
+					body: JSON.stringify({
+						error: "Security verification failed. Please try again.",
+					}),
+				};
+			}
+			console.log(`reCAPTCHA score: ${recaptchaResult.score}`);
+		}
+
 		// Connect to database if needed
 		if (mongoose.connection.readyState === 0) {
 			await mongoose.connect(process.env.MONGO_URI);
 		}
 
 		const stripe = createStripeInstance();
-		const data = JSON.parse(event.body);
 
 		// Fetch the shipping option to get its key
-		const shippingOption = await ShippingModel.findById(data.shipping);
+		const shippingOption = await ShippingModel.findById(checkoutData.shipping);
 		if (!shippingOption) {
 			return {
 				statusCode: 400,
@@ -38,16 +55,16 @@ export const handler = async (event, context) => {
 
 		return await createCheckoutSession(stripe, {
 			lineItems,
-			email: data.email,
+			email: checkoutData.email,
 			metadata: {
 				orderType: "blank-cards",
 				orderData: JSON.stringify({
-					name: data.name,
-					address1: data.address1,
-					address2: data.address2 || "",
-					city: data.city,
-					postcode: data.postcode,
-					shipping: data.shipping,
+					name: checkoutData.name,
+					address1: checkoutData.address1,
+					address2: checkoutData.address2 || "",
+					city: checkoutData.city,
+					postcode: checkoutData.postcode,
+					shipping: checkoutData.shipping,
 					email: data.email,
 					quantities: data.quantities,
 				}),
