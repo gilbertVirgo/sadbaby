@@ -3,5 +3,13 @@ Allow: /
 
 Disallow: /.netlify
 Disallow: /404
+Disallow: /checkout-success
+
+# Block low-quality bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
 
 Sitemap: https://babysad.cards/sitemap.xml
