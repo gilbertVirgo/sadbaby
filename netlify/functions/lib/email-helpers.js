@@ -12,7 +12,7 @@ const sendAdminEmail = async (order) => {
 			email: process.env.BREVO_FROM_EMAIL || "noreply@babysad.cards",
 			name: "Baby Sad Cards",
 		},
-		to: [{ email: "babysad.cards@icloud.com" }],
+		to: [{ email: "sadbaby.cards@icloud.com" }],
 		subject: `New Order - ${
 			order.orderType === "send-a-card" ? "Send a Card" : "Blank Cards"
 		}`,
