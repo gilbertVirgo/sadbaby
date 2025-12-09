@@ -16,7 +16,7 @@ export default () => {
 			<div className="nav__container container">
 				<Link className="nav__logo" to="/">
 					<img
-						src="/logo-with-text.svg"
+						src="/baby-sad-logo.svg"
 						alt="Christian Heritage London"
 					/>
 				</Link>
