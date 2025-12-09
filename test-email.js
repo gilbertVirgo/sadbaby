@@ -72,7 +72,7 @@ async function testEmails() {
 	console.log(
 		`   BREVO_FROM_EMAIL: ${
 			process.env.BREVO_FROM_EMAIL ||
-			"Using default (noreply@sadbaby.cards)"
+			"Using default (noreply@babysad.cards)"
 		}`
 	);
 	console.log("");
@@ -87,7 +87,7 @@ async function testEmails() {
 	try {
 		console.log("📧 Test 1: Sending admin email for send-a-card order...");
 		console.log("   Order ID:", mockOrder._id);
-		console.log("   Recipient: sadbaby.cards@icloud.com");
+		console.log("   Recipient: babysad.cards@icloud.com");
 		await sendAdminEmail(mockOrder);
 		console.log("✅ Admin email sent successfully!\n");
 	} catch (error) {
@@ -109,7 +109,7 @@ async function testEmails() {
 	try {
 		console.log("📧 Test 3: Sending admin email for blank-cards order...");
 		console.log("   Order ID:", mockBlankCardsOrder._id);
-		console.log("   Recipient: sadbaby.cards@icloud.com");
+		console.log("   Recipient: babysad.cards@icloud.com");
 		await sendAdminEmail(mockBlankCardsOrder);
 		console.log("✅ Admin email for blank cards sent successfully!\n");
 	} catch (error) {

@@ -110,12 +110,12 @@ function App() {
 					</div>
 					<a
 						className="group-hz gap--xxs vt--center"
-						href="https://www.instagram.com/sadbaby.cards"
+						href="https://www.instagram.com/babysad.cards"
 						target="_blank"
 						rel="noopener noreferrer"
 					>
 						<div className="icon icon--instagram icon--md icon--dark" />
-						<span>sadbaby.cards</span>
+						<span>babysad.cards</span>
 					</a>
 					<ul className="group-hz gap--md footer__links">
 						{[

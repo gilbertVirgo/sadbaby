@@ -127,12 +127,12 @@ export default () => {
 			<Seo
 				title="Order Confirmed | Baby Sad Greeting Cards"
 				description="Thank you! Your greeting card order has been confirmed. Your hand-printed cards will be on their way shortly."
-				canonical="https://sadbaby.cards/checkout-success"
+				canonical="https://babysad.cards/checkout-success"
 				schemaMarkup={{
 					"@context": "https://schema.org",
 					"@type": "WebPage",
 					name: "Order Confirmed - Baby Sad",
-					url: "https://sadbaby.cards/checkout-success",
+					url: "https://babysad.cards/checkout-success",
 				}}
 			/>
 			<div className="wrapper">

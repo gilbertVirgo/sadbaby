@@ -109,13 +109,13 @@ export default () => {
 			<Seo
 				title="Send a Personalized Hand-Printed Greeting Card | Baby Sad"
 				description="Send hand-printed greeting cards with a personalized message directly to your recipient in the UK. Choose from our collection and we'll deliver it for you."
-				canonical="https://sadbaby.cards/send-a-card"
-				image="https://denw90a2l8ovn.cloudfront.net/sadbaby-cards-seo.jpg"
+				canonical="https://babysad.cards/send-a-card"
+				image="https://denw90a2l8ovn.cloudfront.net/babysad-cards-seo.jpg"
 				schemaMarkup={{
 					"@context": "https://schema.org",
 					"@type": "WebPage",
 					name: "Send a Personalized Greeting Card",
-					url: "https://sadbaby.cards/send-a-card",
+					url: "https://babysad.cards/send-a-card",
 					description:
 						"Create and send a hand-printed greeting card with a personalized message",
 				}}

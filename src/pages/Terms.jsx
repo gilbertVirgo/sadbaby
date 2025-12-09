@@ -6,12 +6,12 @@ export default () => {
 			<Seo
 				title="Terms & Conditions"
 				description="Read the Terms & Conditions for purchasing greeting cards from Baby Sad. Learn about our policies and responsibilities."
-				canonical="https://sadbaby.cards/terms"
+				canonical="https://babysad.cards/terms"
 				schemaMarkup={{
 					"@context": "https://schema.org",
 					"@type": "WebPage",
 					name: "Terms & Conditions",
-					url: "https://sadbaby.cards/terms",
+					url: "https://babysad.cards/terms",
 				}}
 			/>
 			<div className="wrapper">
@@ -224,8 +224,8 @@ export default () => {
 						<p>
 							If you have any questions or concerns, please
 							contact us at:{" "}
-							<a href="mailto:sadbaby.cards@icloud.com">
-								sadbaby.cards@icloud.com
+							<a href="mailto:babysad.cards@icloud.com">
+								babysad.cards@icloud.com
 							</a>
 							.
 						</p>

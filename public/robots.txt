@@ -4,4 +4,4 @@ Allow: /
 Disallow: /.netlify
 Disallow: /404
 
-Sitemap: https://sadbaby.cards/sitemap.xml
+Sitemap: https://babysad.cards/sitemap.xml

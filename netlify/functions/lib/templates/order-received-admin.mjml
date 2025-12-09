@@ -21,7 +21,7 @@
 			<mj-column>
 				<mj-image
 					width="200px"
-					src="https://denw90a2l8ovn.cloudfront.net/sadbaby-frown-upside-down.gif"
+					src="https://denw90a2l8ovn.cloudfront.net/babysad-frown-upside-down.gif"
 					alt="Baby Sad Cards"
 				/>
 			</mj-column>
@@ -175,7 +175,7 @@
 		<mj-section background-color="#ffffea" padding="20px">
 			<mj-column>
 				<mj-button
-					href="https://sadbaby-dashboard.netlify.app/orders/<%- orderId %>"
+					href="https://babysad-dashboard.netlify.app/orders/<%- orderId %>"
 					background-color="#ffffea"
 					color="#0d0d0d"
 					font-size="18px"

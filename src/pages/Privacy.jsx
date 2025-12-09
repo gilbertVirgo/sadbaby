@@ -6,12 +6,12 @@ export default () => {
 			<Seo
 				title="Privacy Policy"
 				description="Learn how Baby Sad collects, uses, and protects your personal information. GDPR compliant data privacy practices."
-				canonical="https://sadbaby.cards/privacy"
+				canonical="https://babysad.cards/privacy"
 				schemaMarkup={{
 					"@context": "https://schema.org",
 					"@type": "WebPage",
 					name: "Privacy Policy",
-					url: "https://sadbaby.cards/privacy",
+					url: "https://babysad.cards/privacy",
 				}}
 			/>
 			<div className="wrapper">
@@ -40,8 +40,8 @@ export default () => {
 						<p>
 							If you have any questions about this policy or how
 							we handle your data, please contact us at:{" "}
-							<a href="mailto:sadbaby.cards@icloud.com">
-								sadbaby.cards@icloud.com
+							<a href="mailto:babysad.cards@icloud.com">
+								babysad.cards@icloud.com
 							</a>
 						</p>{" "}
 						<h2>2. What Information We Collect</h2>
@@ -211,8 +211,8 @@ export default () => {
 						<p>
 							To exercise any of these rights, please contact us
 							at:{" "}
-							<a href="mailto:sadbaby.cards@icloud.com">
-								sadbaby.cards@icloud.com
+							<a href="mailto:babysad.cards@icloud.com">
+								babysad.cards@icloud.com
 							</a>
 							. We will respond to your request within one month.
 						</p>
@@ -313,8 +313,8 @@ export default () => {
 						<p>
 							If you have any questions or concerns, please
 							contact us at:{" "}
-							<a href="mailto:sadbaby.cards@icloud.com">
-								sadbaby.cards@icloud.com
+							<a href="mailto:babysad.cards@icloud.com">
+								babysad.cards@icloud.com
 							</a>
 							.
 						</p>

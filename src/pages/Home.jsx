@@ -19,13 +19,13 @@ export default () => {
 			<Seo
 				title="Hand-Printed Greeting Cards Online | Baby Sad Cards"
 				description="Buy hand-printed lino greeting cards online from Baby Sad. Send personalized cards directly or shop blank cards. UK delivery from our East London studio."
-				canonical="https://sadbaby.cards/"
-				image="https://denw90a2l8ovn.cloudfront.net/sadbaby-cards-seo.jpg"
+				canonical="https://babysad.cards/"
+				image="https://denw90a2l8ovn.cloudfront.net/babysad-cards-seo.jpg"
 				schemaMarkup={{
 					"@context": "https://schema.org",
 					"@type": "WebSite",
 					name: "Baby Sad - Hand-Printed Greeting Cards",
-					url: "https://sadbaby.cards/",
+					url: "https://babysad.cards/",
 					description:
 						"Hand-printed lino greeting cards made in East London",
 				}}

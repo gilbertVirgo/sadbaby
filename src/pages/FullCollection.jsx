@@ -65,13 +65,13 @@ export default () => {
 			<Seo
 				title="Hand-Printed Greeting Cards Collection | Baby Sad"
 				description="Browse our complete collection of hand-printed lino greeting cards for birthdays, celebrations, and special occasions. Send directly or shop cards online."
-				canonical="https://sadbaby.cards/collection"
-				image="https://denw90a2l8ovn.cloudfront.net/sadbaby-cards-seo.jpg"
+				canonical="https://babysad.cards/collection"
+				image="https://denw90a2l8ovn.cloudfront.net/babysad-cards-seo.jpg"
 				schemaMarkup={{
 					"@context": "https://schema.org",
 					"@type": "CollectionPage",
 					name: "Hand-Printed Greeting Cards Collection",
-					url: "https://sadbaby.cards/collection",
+					url: "https://babysad.cards/collection",
 					description:
 						"Hand-printed lino greeting cards for every occasion",
 				}}
