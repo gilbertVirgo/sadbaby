@@ -17,17 +17,17 @@ export default () => {
 	return (
 		<>
 			<Seo
-				title="Hand-Printed Greeting Cards Online | Baby Sad Cards"
-				description="Buy hand-printed lino greeting cards online from Baby Sad. Send personalized cards directly or shop blank cards. UK delivery from our East London studio."
+				title="Baby Sad Cards – Witty, Hand‑Printed Greetings That Make You Smile"
+				description="Witty, hand‑printed linocut greeting cards that put a smile on your face. Send a card with your message or shop blank cards. Posted with care from East London."
 				canonical="https://babysad.cards/"
 				image="https://denw90a2l8ovn.cloudfront.net/babysad-cards-seo.jpg"
 				schemaMarkup={{
 					"@context": "https://schema.org",
 					"@type": "WebSite",
-					name: "Baby Sad - Hand-Printed Greeting Cards",
+					name: "Baby Sad – Witty Hand‑Printed Greeting Cards",
 					url: "https://babysad.cards/",
 					description:
-						"Hand-printed lino greeting cards made in East London",
+						"Witty, hand‑printed linocut greeting cards. Send a smile or shop blank cards.",
 				}}
 			/>
 			<header className="wrapper video-hero__wrapper fg--light">
@@ -45,24 +45,10 @@ export default () => {
 						delay={0}
 						className="group-vt gap--md hz--center"
 					>
-						<h1 className="talign--center">
-							{/* Thoughtful cards,
-							<br />
-							<em
-								style={{
-									position: "relative",
-									left: "-0.5rem",
-								}}
-							>
-								simply crafted
-							</em> */}
-							Paper beats
-							<br />
-							pixels. <em>Always.</em>
-						</h1>
+						<h1 className="talign--center">Send a smile.</h1>
 						<p className="talign--center text-balance max-width--xs">
-							Hand-printed linocut cards on 100% recycled paper.
-							Posted with care from our East London studio.
+							Witty, hand‑printed linocut cards on 100% recycled
+							paper. Posted with care from our East London studio.
 						</p>
 					</FadeInView>
 
@@ -98,7 +84,7 @@ export default () => {
 							<h2>Our Christmas Selection</h2>
 							<img
 								className="hide--md-up"
-								src="https://denw90a2l8ovn.cloudfront.net/christmas-feature.jpg"
+								src="/images/christmas-collection.jpg"
 								alt="Our Christmas Selection"
 							/>
 							<p className="text-balance">
@@ -119,7 +105,7 @@ export default () => {
 						className="showcase-image__wrapper hide--md-down"
 					>
 						<img
-							src="https://denw90a2l8ovn.cloudfront.net/christmas-feature.jpg"
+							src="/images/christmas-collection.jpg"
 							alt="Our Christmas Selection"
 						/>
 					</div>

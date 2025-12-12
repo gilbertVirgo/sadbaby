@@ -1,16 +1,23 @@
 import mongoose from "mongoose";
 import { CardModel } from "./models/Card.js";
 
-let cachedDb = null;
-
 const connectToDatabase = async () => {
-	if (cachedDb) {
-		return cachedDb;
+	if (mongoose.connection.readyState === 1) {
+		// Already connected
+		return mongoose.connection;
 	}
 
-	const connection = await mongoose.connect(process.env.MONGO_URI);
-	cachedDb = connection;
-	return connection;
+	try {
+		const connection = await mongoose.connect(process.env.MONGO_URI, {
+			maxPoolSize: 1,
+			socketTimeoutMS: 45000,
+			serverSelectionTimeoutMS: 5000,
+		});
+		return connection;
+	} catch (error) {
+		console.error("MongoDB connection error:", error.message);
+		throw error;
+	}
 };
 
 export const handler = async (event, context) => {
@@ -29,7 +36,7 @@ export const handler = async (event, context) => {
 			body: JSON.stringify(cards),
 		};
 	} catch (error) {
-		console.error(error);
+		console.error("Error fetching cards:", error);
 		return {
 			statusCode: 500,
 			body: JSON.stringify({ error: "Failed to fetch cards" }),

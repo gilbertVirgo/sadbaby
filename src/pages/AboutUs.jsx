@@ -3,17 +3,18 @@ import Seo from "../components/Seo";
 export default () => {
 	return (
 		<>
+			{/* Single, updated SEO reflecting smile-first vibe */}
 			<Seo
-				title="About Baby Sad - Hand-Printed Lino Cards from East London"
-				description="Meet Baby Sad - a small lino-printing studio in East London. Discover how we create hand-printed greeting cards from recycled paper using sustainable practices."
+				title="About Baby Sad – Witty, Hand‑Printed Cards from East London"
+				description="We’re Baby Sad: a small East London studio making witty, hand‑printed linocut greeting cards on recycled paper. Made to keep, sent with care."
 				canonical="https://babysad.cards/about-us"
 				image="https://denw90a2l8ovn.cloudfront.net/babysad-cards-seo.jpg"
 				schemaMarkup={{
 					"@context": "https://schema.org",
 					"@type": "LocalBusiness",
-					name: "Baby Sad - Hand-Printed Greeting Cards",
+					name: "Baby Sad – Witty Hand‑Printed Greeting Cards",
 					description:
-						"Hand-printed lino greeting cards studio in East London",
+						"Small East London studio making witty, hand‑printed linocut cards on recycled paper.",
 					url: "https://babysad.cards/about-us",
 					image: "https://denw90a2l8ovn.cloudfront.net/babysad-cards-seo.jpg",
 				}}
@@ -32,10 +33,8 @@ export default () => {
 					<div className="about-us__content group-vt gap--sm">
 						<h1>About Baby Sad</h1>
 						<p className="hide--md-up">
-							Baby Sad is a small card-printing studio run by Gil
-							and Lucy in East London. We make lino-printed
-							greeting cards in small batches, using recycled
-							paper and simple, carefully carved&nbsp;designs.
+							We make witty greeting cards designed to raise a
+							smile. Tiny studio, big heart, and jokes that land.
 						</p>
 						<img
 							className="hide--md-up about-us__image"
@@ -46,31 +45,27 @@ export default () => {
 						/>
 						<div className="group-vt gap--xs">
 							<p className="hide--md-down">
-								Baby Sad is a small card-printing studio run by
-								Gil and Lucy in East London. We make
-								lino-printed greeting cards in small batches,
-								using recycled paper and simple, carefully
-								carved&nbsp;designs.
+								We make witty greeting cards designed to raise a
+								smile. We’re a small East London studio with a
+								playful streak.
 							</p>
 							<p>
-								We started Baby Sad because sending something
-								through the post still feels special. In a world
-								of quick, throwaway messages, a physical card
-								slows things down in the best&nbsp;way.
+								We started Baby Sad because sending something in
+								the post still feels special. In a world of
+								throwaway messages, a real card slows things
+								down in the best way — and often sparks a grin.
 							</p>
 							<p>
 								The name comes from our older daughter, who
-								loves to comfort her dolls — always running over
-								to tell us, “baby sad!” and, most amusingly,
-								insists that we draw a &ldquo;Baby Sad&rdquo;
-								whenever pen and paper present themselves. We
-								consider it our family&apos;s first truly
-								original&nbsp;innovation!
+								loves comforting her dolls and would announce,
+								“baby sad!” on cue. She also insists we draw a
+								&lsquo;sad baby&rsquo; whenever there’s pen and
+								paper — our family’s first truly original
+								innovation.
 							</p>
 							<p>
-								Each Baby Sad card is carved and printed by
-								hand, made to keep, and sent from our home
-								studio in East&nbsp;London.
+								Every card is made with care in East London and
+								written to make someone’s day — sometimes twice.
 							</p>
 						</div>
 					</div>

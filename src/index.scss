@@ -780,14 +780,14 @@ body {
 
 body.offcanvas--open {
 	@include media(0, md) {
-		bottom: 50vh;
+		bottom: 66.6vh;
 		.offcanvas__wrapper {
 			bottom: 0rem;
 		}
 	}
 
 	@include media(md) {
-		right: 16rem;
+		right: 20rem;
 
 		.offcanvas__wrapper {
 			right: 0rem;
@@ -827,9 +827,9 @@ body:not(.offcanvas--open) .offcanvas__backdrop {
 
 	@include media(0, md) {
 		width: 100%;
-		height: 50vh;
+		height: 66.6vh;
 		left: 0;
-		bottom: -50vh;
+		bottom: -66.6vh;
 		transition: bottom 0.23s ease-in-out;
 		border-top: 1px solid color("grey");
 		text-align: center;
@@ -869,8 +869,8 @@ body:not(.offcanvas--open) .offcanvas__backdrop {
 		justify-content: safe center;
 		top: 0;
 		transition: right 0.23s ease-in-out;
-		right: -16rem;
-		width: 16rem;
+		right: -20rem;
+		width: 20rem;
 		border-left: 1px solid color("grey");
 	}
 }
