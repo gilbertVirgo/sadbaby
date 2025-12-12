@@ -40,8 +40,8 @@ export default () => {
 						<p>
 							If you have any questions about this policy or how
 							we handle your data, please contact us at:{" "}
-							<a href="mailto:sadbaby.cards@icloud.com">
-								sadbaby.cards@icloud.com
+							<a href="mailto:hello@babysad.cards.com">
+								hello@babysad.cards.com
 							</a>
 						</p>{" "}
 						<h2>2. What Information We Collect</h2>
@@ -211,8 +211,8 @@ export default () => {
 						<p>
 							To exercise any of these rights, please contact us
 							at:{" "}
-							<a href="mailto:sadbaby.cards@icloud.com">
-								sadbaby.cards@icloud.com
+							<a href="mailto:hello@babysad.cards.com">
+								hello@babysad.cards.com
 							</a>
 							. We will respond to your request within one month.
 						</p>
@@ -313,8 +313,8 @@ export default () => {
 						<p>
 							If you have any questions or concerns, please
 							contact us at:{" "}
-							<a href="mailto:sadbaby.cards@icloud.com">
-								sadbaby.cards@icloud.com
+							<a href="mailto:hello@babysad.cards.com">
+								hello@babysad.cards.com
 							</a>
 							.
 						</p>

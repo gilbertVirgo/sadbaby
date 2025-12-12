@@ -224,8 +224,8 @@ export default () => {
 						<p>
 							If you have any questions or concerns, please
 							contact us at:{" "}
-							<a href="mailto:sadbaby.cards@icloud.com">
-								sadbaby.cards@icloud.com
+							<a href="mailto:hello@babysad.cards.com">
+								hello@babysad.cards.com
 							</a>
 							.
 						</p>
