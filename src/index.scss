@@ -326,8 +326,9 @@ p.small {
 	}
 
 	display: grid;
-	column-gap: sp(sm);
-	row-gap: sp(md);
+	gap: sp(xxs);
+	// column-gap: sp(sm);
+	// row-gap: sp(md);
 
 	width: 100%;
 
@@ -409,7 +410,7 @@ p.small {
 
 	&.blank-cards-choose__button--selected {
 		outline-color: color("primary");
-		outline-width: sp(xxxs);
+		outline-width: 1px;
 	}
 }
 

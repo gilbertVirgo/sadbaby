@@ -127,7 +127,7 @@ export default ({
 										</div>
 									</button>
 								)}
-								<h4>{card.title}</h4>
+								{/* <h4>{card.title}</h4> */}
 								{mode === "multiple" && (
 									<input
 										type="number"
