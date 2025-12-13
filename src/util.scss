@@ -167,6 +167,7 @@ $align-values: (
 $icons: (
 	"card",
 	"instagram",
+	"facebook",
 	"open-menu",
 	"close-menu",
 	"bag",
@@ -206,6 +207,25 @@ $icons: (
 		&--#{$name} {
 			width: $size;
 		}
+	}
+
+	// Default-fill mode: use background-image icons instead of masks
+	&--default-fill {
+		// Disable mask rendering and color fills
+		mask-image: none !important;
+		-webkit-mask-image: none !important;
+		background-color: transparent !important;
+		// Ensure background image behaves like the mask previously
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: center;
+	}
+}
+
+// Per-icon background images when default-fill is active
+@each $name in $icons {
+	.icon--default-fill.icon--#{$name} {
+		background-image: url("/icons/#{$name}.svg");
 	}
 }
 

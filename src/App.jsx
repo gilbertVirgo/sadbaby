@@ -11,6 +11,7 @@ import Terms from "./pages/Terms";
 import Privacy from "./pages/Privacy";
 import CheckoutSuccess from "./pages/CheckoutSuccess";
 import { clearStoredData } from "./utils/localStorage";
+import Footer from "./static/Footer";
 
 function RecaptchaLoader() {
 	useEffect(() => {
@@ -97,39 +98,7 @@ function App() {
 				<Route path="/checkout-success" element={<CheckoutSuccess />} />
 				<Route path="*" element={<NotFound />} />
 			</Routes>
-			<footer className="wrapper footer__wrapper fg--dark">
-				<div className="footer__container container container--lg group-vt gap--lg hz--center talign--center">
-					<div className="group-vt gap--xs">
-						<p>
-							© Baby Sad 2025 — Hand-printed cards by Gil & Lucy
-							in East London.
-						</p>
-						<p>
-							<em>Hand-printed, simple, sustainable.</em>
-						</p>
-					</div>
-					<a
-						className="group-hz gap--xxs vt--center"
-						href="https://www.instagram.com/babysad.cards"
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						<div className="icon icon--instagram icon--md icon--dark" />
-						<span>babysad.cards</span>
-					</a>
-					<ul className="group-hz gap--md footer__links">
-						{[
-							{ href: "/terms", text: "Terms & Conditions" },
-							{ href: "/privacy", text: "Privacy Policy" },
-							{ href: "/about-us", text: "About Us" },
-						].map((link) => (
-							<li key={link.href} className="hint">
-								<a href={link.href}>{link.text}</a>
-							</li>
-						))}
-					</ul>
-				</div>
-			</footer>
+			<Footer />
 		</BrowserRouter>
 	);
 }
