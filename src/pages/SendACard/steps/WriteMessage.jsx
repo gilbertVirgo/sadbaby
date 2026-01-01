@@ -116,7 +116,7 @@ export default ({ data, setData, onNext, onBack }) => {
 
 		// Start typing effect only if textarea is empty and not focused
 		if (!message && !hasFocus) {
-			timeoutId = setTimeout(typeWriter, 1000);
+			timeoutId = setTimeout(typeWriter, 250);
 		} else if (hasFocus) {
 			// Clear placeholder when focused
 			setPlaceholder("");
