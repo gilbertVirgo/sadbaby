@@ -26,7 +26,7 @@ export const handler = async (event, context) => {
 	try {
 		await connectToDatabase();
 
-		const cards = await CardModel.find({});
+		const cards = await CardModel.find({ hidden: { $ne: true } });
 
 		return {
 			statusCode: 200,

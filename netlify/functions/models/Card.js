@@ -9,6 +9,10 @@ const cardSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 	},
+	hidden: {
+		type: Boolean,
+		default: false,
+	},
 });
 
 cardSchema.virtual("imageURL").get(function () {

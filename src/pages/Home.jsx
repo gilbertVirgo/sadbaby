@@ -47,8 +47,9 @@ export default () => {
 					>
 						<h1 className="talign--center">Send a smile.</h1>
 						<p className="talign--center text-balance max-width--xs">
-							Witty, hand‑printed linocut cards on 100% recycled
-							paper. Posted with care from our East London studio.
+							{/* Witty, h */}
+							Hand‑printed linocut cards on 100% recycled paper.
+							Posted with care from our East London studio.
 						</p>
 					</FadeInView>
 
@@ -73,7 +74,7 @@ export default () => {
 					</FadeInView>
 				</div>
 			</header>
-			<section className="wrapper">
+			{/* <section className="wrapper">
 				<FadeInView
 					delay={0.32}
 					className="showcase__container container container--sm"
@@ -110,7 +111,7 @@ export default () => {
 						/>
 					</div>
 				</FadeInView>
-			</section>
+			</section> */}
 			<section className="wrapper">
 				<div className="container container--xl group-vt gap--xl hz--center">
 					<FadeInView
