@@ -5,16 +5,16 @@ export default () => {
 		<>
 			{/* Single, updated SEO reflecting smile-first vibe */}
 			<Seo
-				title="About Baby Sad – Witty, Hand‑Printed Cards from East London"
-				description="We’re Baby Sad: a small East London studio making witty, hand‑printed linocut greeting cards on recycled paper. Made to keep, sent with care."
+				title="About Baby Sad – Hand‑Printed Cards from East London"
+				description="We’re Baby Sad: a small East London studio making hand‑printed linocut greeting cards on recycled paper. Made to keep, sent with care."
 				canonical="https://babysad.cards/about-us"
 				image="https://denw90a2l8ovn.cloudfront.net/babysad-cards-seo.jpg"
 				schemaMarkup={{
 					"@context": "https://schema.org",
 					"@type": "LocalBusiness",
-					name: "Baby Sad – Witty Hand‑Printed Greeting Cards",
+					name: "Baby Sad – Hand‑Printed Greeting Cards",
 					description:
-						"Small East London studio making witty, hand‑printed linocut cards on recycled paper.",
+						"Small East London studio making hand‑printed linocut cards on recycled paper.",
 					url: "https://babysad.cards/about-us",
 					image: "https://denw90a2l8ovn.cloudfront.net/babysad-cards-seo.jpg",
 				}}
@@ -33,8 +33,8 @@ export default () => {
 					<div className="about-us__content group-vt gap--sm">
 						<h1>About Baby Sad</h1>
 						<p className="hide--md-up">
-							We make witty greeting cards designed to raise a
-							smile. Tiny studio, big heart, and jokes that land.
+							We make greeting cards designed to raise a smile.
+							Tiny studio, big heart, and jokes that land.
 						</p>
 						<img
 							className="hide--md-up about-us__image"
@@ -45,9 +45,7 @@ export default () => {
 						/>
 						<div className="group-vt gap--xs">
 							<p className="hide--md-down">
-								We make witty greeting cards designed to raise a
-								smile. We’re a small East London studio with a
-								playful streak.
+								We make hand-printed linocut greeting cards.
 							</p>
 							<p>
 								We started Baby Sad because sending something in

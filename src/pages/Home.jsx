@@ -1,7 +1,7 @@
-import React from "react";
 import { FadeInView } from "../components/FadeInView";
-import Seo from "../components/Seo";
 import FeatureScroll from "../components/FeatureScroll";
+import React from "react";
+import Seo from "../components/Seo";
 
 export default () => {
 	let [accordionOpenIndex, setAccordionOpenIndex] = React.useState(0);
@@ -17,17 +17,17 @@ export default () => {
 	return (
 		<>
 			<Seo
-				title="Baby Sad Cards – Witty, Hand‑Printed Greetings That Make You Smile"
-				description="Witty, hand‑printed linocut greeting cards that put a smile on your face. Send a card with your message or shop blank cards. Posted with care from East London."
+				title="Baby Sad Cards – Hand‑Printed Greetings That Make You Smile"
+				description="Hand‑printed linocut greeting cards that put a smile on your face. Send a card with your message or shop blank cards. Posted with care from East London."
 				canonical="https://babysad.cards/"
 				image="https://denw90a2l8ovn.cloudfront.net/babysad-cards-seo.jpg"
 				schemaMarkup={{
 					"@context": "https://schema.org",
 					"@type": "WebSite",
-					name: "Baby Sad – Witty Hand‑Printed Greeting Cards",
+					name: "Baby Sad – Hand‑Printed Greeting Cards",
 					url: "https://babysad.cards/",
 					description:
-						"Witty, hand‑printed linocut greeting cards. Send a smile or shop blank cards.",
+						"Hand‑printed linocut greeting cards. Send a smile or shop blank cards.",
 				}}
 			/>
 			<header className="wrapper video-hero__wrapper fg--light">
@@ -47,7 +47,6 @@ export default () => {
 					>
 						<h1 className="talign--center">Send a smile.</h1>
 						<p className="talign--center text-balance max-width--xs">
-							{/* Witty, h */}
 							Hand‑printed linocut cards on 100% recycled paper.
 							Posted with care from our East London studio.
 						</p>
@@ -212,7 +211,7 @@ export default () => {
 							Questions we&apos;re often asked...
 						</h2>
 					</FadeInView>
-					<div className="max-width--xs group-vt">
+					<FadeInView delay={0.16} className="max-width--xs group-vt">
 						{[
 							{
 								title: "Are your cards really hand printed?",
@@ -246,8 +245,7 @@ export default () => {
 							let isOpen = accordionOpenIndex === index;
 
 							return (
-								<FadeInView
-									delay={0.16 * index + 0.16}
+								<div
 									key={index}
 									className={`faq__accordion ${
 										isOpen ? "faq__accordion--open" : ""
@@ -269,10 +267,10 @@ export default () => {
 											<p>{faq.body}</p>
 										</div>
 									</div>
-								</FadeInView>
+								</div>
 							);
 						})}
-					</div>
+					</FadeInView>
 				</div>
 			</section>
 		</>
